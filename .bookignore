@@ -1,0 +1,10 @@
+/build
+/config
+/db
+/dist
+/routes
+/src
+/static
+/handlers
+/model
+/scripts

@@ -1,2 +1,3 @@
-# docker-workshop
-Workshop on Docker, Containers and Golang
+# Docker Workshop
+
+A workshop on Docker, Containers, Golang, and Vue.js

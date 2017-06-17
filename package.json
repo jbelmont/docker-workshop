@@ -1,0 +1,83 @@
+{
+  "name": "docker-workshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jbelmont/docker-workshop.git",
+  "author": "Jean-Marcel Belmont <marcelbelmont@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "webpack": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --fix --ext .js .",
+    "go": "go run main.go",
+    "browser": "node browser.js",
+    "dev": "npm run go & npm run webpack",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/docker-workshop.git gh-pages --force"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "ava": "^0.19.1",
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^2.0.3",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "file-loader": "^0.9.0",
+    "gitbook": "^3.2.2",
+    "gitbook-cli": "^2.3.0",
+    "gitbook-plugin-flowchart": "^1.1.0",
+    "opn": "^5.0.0",
+    "postcss-cli": "^4.0.0",
+    "sinon": "^2.3.2",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "vue": "^2.3.4"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ],
+      "stage-2"
+    ],
+    "plugins": [],
+    "comments": false,
+    "env": {
+      "test": {
+        "presets": [
+          "env",
+          "stage-2"
+        ],
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  }
+}
