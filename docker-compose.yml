@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/var/www/app
+      - /var/www/app/node_modules
+    ports:
+      - "8080:8080"
+    links:
+      - redis
+  test:
+    image: mhart/alpine-node:8.1.2
+    working_dir: /var/www/app
+    volumes:
+      - .:/var/www/app
+    environment:
+      NODE_ENV: testing
+    command:
+      /bin/sh -c "./node_modules/.bin/ava test/unit/*.js"
+  db:
+    image: mongo:3.4.5
+
+  redis:
+    image: redis:3.2.9-alpine
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
