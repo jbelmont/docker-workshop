@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -25,6 +25,12 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.scss$/,
+        use: [{
+          loader: 'sass-loader' // compiles SCSS to CSS
+        }]
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -40,7 +46,10 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
   performance: {
     hints: false

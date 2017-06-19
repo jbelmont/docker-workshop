@@ -10,7 +10,7 @@ module.exports = {
     node: true
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: ['plugin:vue-libs/recommended'],
   // required to lint *.vue files
   plugins: [
     'html'
@@ -24,16 +24,16 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'indent': [
-        'error',
-        2
+      'error',
+      2
     ],
     'linebreak-style': [
-        'error',
-        'unix'
+      'error',
+      'unix'
     ],
     'quotes': [
-        'error',
-        'single'
+      'error',
+      'single'
     ]
   }
 };
