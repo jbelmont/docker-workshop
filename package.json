@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "webpack": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "webpack:docker": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --host 0.0.0.0",
     "build:server": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build": "docker-compose build",
     "lint": "eslint --ext .js .",
@@ -15,7 +16,9 @@
     "browser": "node browser.js",
     "dev": "docker-compose up web db redis",
     "dev:server": "npm run go & npm run webpack",
+    "dev:docker": "npm run go & npm run webpack:docker",
     "docs:prepare": "gitbook install",
+    "remove:container": "docker-compose rm",
     "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/docker-workshop.git gh-pages --force"

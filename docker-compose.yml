@@ -2,11 +2,13 @@ version: '3'
 services:
   web:
     build: .
+    environment:
+      DOCKER: "true"
     volumes:
-      - .:/var/www/app
+      - .:/var/www/app/:rw
       - /var/www/app/node_modules
     ports:
-      - "3000:3000"
+      - "3000:8080"
     links:
       - redis
   test:
