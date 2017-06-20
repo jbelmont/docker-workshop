@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.1.2
+FROM mhart/alpine-node:8.0.0
 
 LABEL maintainer "marcelbelmont@gmail.com"
 
@@ -11,13 +11,16 @@ RUN apk add --no-cache make gcc g++ python bash go bzr git mercurial subversion 
 RUN mkdir -p ${appDir}
 WORKDIR ${appDir}
 
-# Add application files
-ADD . ${appDir}
+COPY . ${appDir}
+COPY package.json ${appDir}/package.json
 
 # Install npm dependencies and install ava globally
 RUN npm install
-RUN npm install -g ava webpack webpack-dev-server yarn
 RUN go get gopkg.in/mgo.v2
+RUN go get github.com/gorilla/mux
+RUN go get github.com/jbelmont/docker-workshop/routes
+RUN go get github.com/jbelmont/docker-workshop/handlers
+RUN go get github.com/jbelmont/docker-workshop/model
 
 # Add main node execution command
 CMD ["npm", "run", "dev:docker"]
