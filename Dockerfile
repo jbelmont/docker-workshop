@@ -17,10 +17,12 @@ COPY package.json ${appDir}/package.json
 # Install npm dependencies and install ava globally
 RUN npm install
 RUN go get gopkg.in/mgo.v2
+RUN go get github.com/keimoon/gore
 RUN go get github.com/gorilla/mux
 RUN go get github.com/jbelmont/docker-workshop/routes
 RUN go get github.com/jbelmont/docker-workshop/handlers
 RUN go get github.com/jbelmont/docker-workshop/model
+RUN go get github.com/jbelmont/docker-workshop/redis
 
 # Add main node execution command
 CMD ["npm", "run", "dev:docker"]

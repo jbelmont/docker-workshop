@@ -1,8 +1,6 @@
 package model
 
 import (
-	"log"
-
 	mgo "gopkg.in/mgo.v2"
 )
 
@@ -16,9 +14,9 @@ var session *mgo.Session
 
 func createDBSession() {
 	var err error
-	session, err = mgo.Dial("mongodb://localhost:27017")
+	session, err = mgo.Dial("localhost")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }
 
@@ -42,4 +40,6 @@ func CreateInitDocument(m *mgo.Collection) {
 	for _, model := range models {
 		m.Insert(model)
 	}
+	session := GetSession()
+	session.Close()
 }

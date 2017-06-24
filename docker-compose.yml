@@ -22,6 +22,8 @@ services:
       /bin/sh -c "./node_modules/.bin/ava test/unit/*.js"
   db:
     image: mongo:3.4.5
+    ports:
+      - "27017:27017"
 
   redis:
     image: redis:3.2.9-alpine
