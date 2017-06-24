@@ -16,13 +16,13 @@ var session *mgo.Session
 
 func createDBSession() {
 	var err error
-	session, err = mgo.Dial("localhost")
+	session, err = mgo.Dial("mongodb://localhost:27017")
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func getSession() *mgo.Session {
+func GetSession() *mgo.Session {
 	if session == nil {
 		createDBSession()
 	}
@@ -34,4 +34,12 @@ func InitDB() *mgo.Collection {
 	createDBSession()
 	c := NewContext()
 	return c.DBCollection()
+}
+
+// CreateInitDocument initializes collection with 50 users
+func CreateInitDocument(m *mgo.Collection) {
+	models := GetModels()
+	for _, model := range models {
+		m.Insert(model)
+	}
 }

@@ -1,11 +1,17 @@
 package model
 
 import (
-	"fmt"
 	"testing"
+
+	"gopkg.in/mgo.v2"
 )
 
+var db *mgo.Collection
+
 func TestInitDB(t *testing.T) {
-	db := InitDB()
-	fmt.Println(db)
+	db = InitDB()
+}
+
+func TestCreateInitDocument(t *testing.T) {
+	CreateInitDocument(db)
 }

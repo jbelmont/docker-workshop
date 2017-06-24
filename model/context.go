@@ -1,6 +1,8 @@
 package model
 
-import mgo "gopkg.in/mgo.v2"
+import (
+	mgo "gopkg.in/mgo.v2"
+)
 
 type Context struct {
 	Session *mgo.Session
@@ -15,7 +17,7 @@ func (c *Context) DBCollection() *mgo.Collection {
 }
 
 func NewContext() *Context {
-	session := getSession()
+	session := GetSession()
 	c := &Context{
 		Session: session,
 	}

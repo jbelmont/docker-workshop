@@ -1,10 +1,8 @@
 package model
 
-import "gopkg.in/mgo.v2/bson"
-
 // Model is a mgo struct data type
 type Model struct {
-	ID        bson.ObjectId `bson:"_id, omitempty"`
+	ID        string
 	FirstName string
 	LastName  string
 	Email     string

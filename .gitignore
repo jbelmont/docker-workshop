@@ -21,3 +21,6 @@
 
 # Remove build directory
 /static/build/*
+
+# Dont add npm-debug.log
+/npm-debug.log
