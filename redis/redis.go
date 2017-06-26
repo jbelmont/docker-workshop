@@ -1,6 +1,10 @@
 package redis
 
-import "github.com/keimoon/gore"
+import (
+	"os"
+
+	"github.com/keimoon/gore"
+)
 
 // User Struct is the model for the app
 type User struct {
@@ -12,7 +16,8 @@ type User struct {
 }
 
 func ConnectRedis() {
-	conn, err := gore.Dial("localhost:6379")
+	dial := os.Getenv("REDIS_URL")
+	conn, err := gore.Dial(dial)
 	if err != nil {
 		return
 	}

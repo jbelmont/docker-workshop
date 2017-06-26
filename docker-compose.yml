@@ -4,6 +4,7 @@ services:
     build: .
     environment:
       DOCKER: "true"
+      MONGO_URL: "mongodb://dockerworkshop_db_1/docker-workshop"
     volumes:
       - .:/var/www/app/:rw
       - /var/www/app/node_modules
@@ -24,6 +25,8 @@ services:
     image: mongo:3.4.5
     ports:
       - "27017:27017"
+    volumes:
+      - /data/mongodb/db:/data/db
 
   redis:
     image: redis:3.2.9-alpine
@@ -31,3 +34,5 @@ services:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6379:6379"
+    environment:
+      REDIS_URL: "redis:6379"

@@ -1,6 +1,10 @@
 package model
 
 import (
+	"log"
+	"os"
+	"time"
+
 	mgo "gopkg.in/mgo.v2"
 )
 
@@ -12,24 +16,28 @@ const (
 
 var session *mgo.Session
 
-func createDBSession() {
-	var err error
-	session, err = mgo.Dial("localhost")
-	if err != nil {
-		panic(err)
+func CreateDBSession() {
+	mongoDBDialInfo := &mgo.DialInfo{
+		Addrs:   []string{os.Getenv("MONGO_URL")},
+		Timeout: 60 * time.Second,
 	}
+	db, err := mgo.DialWithInfo(mongoDBDialInfo)
+	if err != nil {
+		log.Fatal("Cannot Dial Mongo: ", err)
+	}
+	defer db.Close()
+	db.SetMode(mgo.Monotonic, true)
 }
 
 func GetSession() *mgo.Session {
 	if session == nil {
-		createDBSession()
+		CreateDBSession()
 	}
 	return session
 }
 
 // InitDB is to be used in main.go to initialize database
 func InitDB() *mgo.Collection {
-	createDBSession()
 	c := NewContext()
 	return c.DBCollection()
 }
@@ -41,5 +49,5 @@ func CreateInitDocument(m *mgo.Collection) {
 		m.Insert(model)
 	}
 	session := GetSession()
-	session.Close()
+	defer session.Close()
 }

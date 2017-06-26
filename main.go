@@ -14,17 +14,21 @@ func getRouter() *mux.Router {
 }
 
 func initDB() {
-	session := model.InitDB()
-	model.CreateInitDocument(session)
+	context := model.NewContext()
+	collection := context.DBCollection()
+	model.CreateInitDocument(collection)
 }
 
 func initRedis() {
 	redis.ConnectRedis()
 }
 
+func init() {
+	go initDB()
+	go initRedis()
+}
+
 func main() {
-	defer initDB()
-	defer initRedis()
-	router := getRouter()
-	http.ListenAndServe(":3000", router)
+	r := getRouter()
+	http.ListenAndServe(":3000", r)
 }
