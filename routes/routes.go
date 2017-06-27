@@ -34,8 +34,8 @@ func (h *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Visitor count: %d.", count)
 }
 
+// NewRouter retrieves a new router
 func NewRouter() *mux.Router {
-
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		if route.Name == "Index" {

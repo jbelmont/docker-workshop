@@ -2,8 +2,6 @@ package model
 
 import (
 	"log"
-	"os"
-	"time"
 
 	mgo "gopkg.in/mgo.v2"
 )
@@ -16,19 +14,20 @@ const (
 
 var session *mgo.Session
 
+// CreateDBSession creates mgo session
 func CreateDBSession() {
-	mongoDBDialInfo := &mgo.DialInfo{
-		Addrs:   []string{os.Getenv("MONGO_URL")},
-		Timeout: 60 * time.Second,
-	}
-	db, err := mgo.DialWithInfo(mongoDBDialInfo)
+	var err error
+	session, err = mgo.Dial("dockerworkshop_db_1")
+	defer session.Close()
 	if err != nil {
 		log.Fatal("Cannot Dial Mongo: ", err)
 	}
-	defer db.Close()
-	db.SetMode(mgo.Monotonic, true)
+	session.SetMode(mgo.Monotonic, true)
+	collection := InitDB()
+	CreateInitDocument(collection)
 }
 
+// GetSession will create a session if doesn't exist else will return existing session
 func GetSession() *mgo.Session {
 	if session == nil {
 		CreateDBSession()
@@ -48,6 +47,4 @@ func CreateInitDocument(m *mgo.Collection) {
 	for _, model := range models {
 		m.Insert(model)
 	}
-	session := GetSession()
-	defer session.Close()
 }

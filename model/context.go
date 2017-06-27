@@ -4,18 +4,22 @@ import (
 	mgo "gopkg.in/mgo.v2"
 )
 
+// Context is an mgo session
 type Context struct {
 	Session *mgo.Session
 }
 
+// Close the context session
 func (c *Context) Close() {
 	c.Session.Close()
 }
 
+// DBCollection returns mgo collection
 func (c *Context) DBCollection() *mgo.Collection {
 	return c.Session.DB(DBName).C(CName)
 }
 
+// NewContext returns context
 func NewContext() *Context {
 	session := GetSession()
 	c := &Context{

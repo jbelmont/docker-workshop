@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -14,21 +15,16 @@ func getRouter() *mux.Router {
 }
 
 func initDB() {
-	context := model.NewContext()
-	collection := context.DBCollection()
-	model.CreateInitDocument(collection)
+	model.NewContext()
 }
 
 func initRedis() {
 	redis.ConnectRedis()
 }
 
-func init() {
-	go initDB()
-	go initRedis()
-}
-
 func main() {
-	r := getRouter()
-	http.ListenAndServe(":3000", r)
+	initDB()
+	initRedis()
+	router := getRouter()
+	log.Fatal(http.ListenAndServe(":3000", router))
 }

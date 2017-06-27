@@ -1,19 +1,19 @@
 version: '3'
 services:
-  web:
-    build: .
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       DOCKER: "true"
-      MONGO_URL: "mongodb://dockerworkshop_db_1/docker-workshop"
     volumes:
       - .:/var/www/app/:rw
       - /var/www/app/node_modules
     ports:
-      - "3000:8080"
-    links:
-      - redis
+      - "3000:8081"
+    restart: always
   test:
-    image: mhart/alpine-node:8.1.2
+    image: mhart/alpine-node:8.0.0
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
@@ -21,18 +21,31 @@ services:
       NODE_ENV: testing
     command:
       /bin/sh -c "./node_modules/.bin/ava test/unit/*.js"
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-go
+    command: go run main.go
+    volumes:
+      - .:/var/www/app/:rw
+    ports:
+      - "8080:8080"
+    environment:
+      MONGO_URL: "db"
+      REDIS_URL: "redis"
+    restart: always
+    links:
+      - redis
+      - db
   db:
     image: mongo:3.4.5
     ports:
       - "27017:27017"
     volumes:
-      - /data/mongodb/db:/data/db
-
+      - ./:/data/db
   redis:
     image: redis:3.2.9-alpine
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6379:6379"
-    environment:
-      REDIS_URL: "redis:6379"
