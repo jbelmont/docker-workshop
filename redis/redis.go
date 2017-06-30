@@ -18,12 +18,20 @@ type User struct {
 	Gender    string `json:"gender"`
 }
 
+type Users []User
+
 var connect *gore.Conn
 
 // ConnectRedis connects to redis and sets users keys
 func ConnectRedis() {
 	var err error
-	connect, err = gore.Dial(os.Getenv("REDIS_URL"))
+	var dial string
+	if os.Getenv("REDIS_URL") == "redis" {
+		dial = os.Getenv("REDIS_URL")
+	} else {
+		dial = "localhost:6379"
+	}
+	connect, err = gore.Dial(dial)
 	if err != nil {
 		return
 	}
@@ -40,6 +48,16 @@ func setUsers() {
 		log.Fatal(err, "not ok")
 	}
 	defer connect.Close()
+}
+
+// GetKey returns a string version of the redis key
+func GetKey(key string) (*gore.Reply, error) {
+	connect := GetConnection()
+	reply, err := gore.NewCommand("GET", key).Run(connect)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
 }
 
 // GetConnection returns redis url

@@ -2,6 +2,7 @@ package model
 
 import (
 	"log"
+	"os"
 
 	mgo "gopkg.in/mgo.v2"
 )
@@ -17,7 +18,13 @@ var session *mgo.Session
 // CreateDBSession creates mgo session
 func CreateDBSession() {
 	var err error
-	session, err = mgo.Dial("dockerworkshop_db_1")
+	var dial string
+	if os.Getenv("MONGO_URL") == "db" {
+		dial = os.Getenv("MONGO_URL")
+	} else {
+		dial = "localhost"
+	}
+	session, err = mgo.Dial(dial)
 	defer session.Close()
 	if err != nil {
 		log.Fatal("Cannot Dial Mongo: ", err)

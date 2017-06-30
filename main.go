@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/jbelmont/docker-workshop/handlers"
 	"github.com/jbelmont/docker-workshop/model"
 	"github.com/jbelmont/docker-workshop/redis"
 	"github.com/jbelmont/docker-workshop/routes"
@@ -26,5 +27,6 @@ func main() {
 	initDB()
 	initRedis()
 	router := getRouter()
-	log.Fatal(http.ListenAndServe(":3000", router))
+	router.HandleFunc("/ap/v1/users", handlers.GetUsers)
+	log.Fatal(http.ListenAndServe(":3001", router))
 }

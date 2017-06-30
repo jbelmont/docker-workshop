@@ -1,5 +1,17 @@
 version: '3'
 services:
+  db:
+    image: mongo:3.4.5
+    ports:
+      - "27017:27017"
+    volumes:
+      - /usr/local/var/mongodb:/data/db
+  redis:
+    image: redis:3.2.9-alpine
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
   frontend:
     build:
       context: .
@@ -10,7 +22,7 @@ services:
       - .:/var/www/app/:rw
       - /var/www/app/node_modules
     ports:
-      - "3000:8081"
+      - "3000:3000"
     restart: always
   test:
     image: mhart/alpine-node:8.0.0
@@ -35,17 +47,5 @@ services:
       REDIS_URL: "redis"
     restart: always
     links:
-      - redis
       - db
-  db:
-    image: mongo:3.4.5
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./:/data/db
-  redis:
-    image: redis:3.2.9-alpine
-    volumes:
-      - ./redis.conf:/usr/local/etc/redis/redis.conf
-    ports:
-      - "6379:6379"
+      - redis

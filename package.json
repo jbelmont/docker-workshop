@@ -17,9 +17,10 @@
     "dev": "docker-compose up frontend backend db redis",
     "dev:server": "npm run go & npm run webpack",
     "dev:docker": "npm run webpack:docker",
-    "stop:docker": "docker-compose stop",
+    "remove:containers": "docker-compose rm -f",
+    "show:containers": "docker-compose ps",
+    "stop:containers": "docker-compose stop",
     "docs:prepare": "gitbook install",
-    "remove:container": "docker-compose rm",
     "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:jbelmont/docker-workshop.git gh-pages --force"
