@@ -19,8 +19,8 @@ func (c *Context) DBCollection() *mgo.Collection {
 	return c.Session.DB(DBName).C(CName)
 }
 
-// NewContext returns context
-func NewContext() *Context {
+// MongoSetup returns context
+func MongoSetup() *Context {
 	session := GetSession()
 	c := &Context{
 		Session: session,

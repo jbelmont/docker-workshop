@@ -44,7 +44,7 @@ func GetSession() *mgo.Session {
 
 // InitDB is to be used in main.go to initialize database
 func InitDB() *mgo.Collection {
-	c := NewContext()
+	c := MongoSetup()
 	return c.DBCollection()
 }
 

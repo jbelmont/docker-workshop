@@ -15,10 +15,14 @@ func getRouter() *mux.Router {
 	return routes.NewRouter()
 }
 
+func initRedis() {
+	redis.SetKey("users", model.GetModels())
+}
+
 func main() {
-	model.NewContext()
-	redis.ConnectRedis()
+	initRedis()
+	model.MongoSetup()
 	router := getRouter()
-	router.HandleFunc("/ap/v1/users", handlers.GetUsers)
+	router.HandleFunc("/api/v1/users", handlers.GetUsers)
 	log.Fatal(http.ListenAndServe(":3001", router))
 }

@@ -1,11 +1,9 @@
 package redis
 
 import (
-	"encoding/json"
 	"log"
 	"os"
 
-	"github.com/jbelmont/docker-workshop/model"
 	"github.com/keimoon/gore"
 )
 
@@ -18,41 +16,38 @@ type User struct {
 	Gender    string `json:"gender"`
 }
 
+const (
+	localDial = "localhost:6379"
+	redisURL  = "REDIS_URL"
+	redis     = "redis"
+	users     = "users"
+)
+
+var (
+	dockerDial = os.Getenv(redisURL)
+)
+
+// Users is a slice of User
 type Users []User
 
 var connect *gore.Conn
 
-// ConnectRedis connects to redis and sets users keys
-func ConnectRedis() {
-	var err error
-	var dial string
-	if os.Getenv("REDIS_URL") == "redis" {
-		dial = os.Getenv("REDIS_URL")
-	} else {
-		dial = "localhost:6379"
+// SetKey sets a redis key
+func SetKey(key string, data interface{}) {
+	connect := Connect()
+	if data == nil {
+		log.Println("should not be nil")
 	}
-	connect, err = gore.Dial(dial)
-	if err != nil {
-		return
-	}
-	setUsers()
-}
-
-func setUsers() {
-	data, err := json.Marshal(model.GetUsers())
-	if err != nil {
-		panic(err)
-	}
-	rep, err := gore.NewCommand("SET", "users", data).Run(connect)
+	rep, err := gore.NewCommand("SET", key, data).Run(connect)
 	if err != nil || !rep.IsOk() {
 		log.Fatal(err, "not ok")
 	}
 	defer connect.Close()
 }
 
-// GetKey returns a string version of the redis key
+// GetKey returns a redis value
 func GetKey(key string) (*gore.Reply, error) {
-	connect := GetConnection()
+	connect := Connect()
 	reply, err := gore.NewCommand("GET", key).Run(connect)
 	if err != nil {
 		return nil, err
@@ -60,10 +55,16 @@ func GetKey(key string) (*gore.Reply, error) {
 	return reply, nil
 }
 
-// GetConnection returns redis url
-func GetConnection() *gore.Conn {
+// Connect returns redis connection
+func Connect() *gore.Conn {
 	var err error
-	connect, err = gore.Dial("localhost:6379")
+	var dial string
+	if redisURL == redis {
+		dial = dockerDial
+	} else {
+		dial = localDial
+	}
+	connect, err = gore.Dial(dial)
 	if err != nil {
 		return nil
 	}
