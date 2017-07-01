@@ -2,10 +2,9 @@ version: '3'
 services:
   db:
     image: mongo:3.4.5
-    ports:
-      - "27017:27017"
+    command: mongod --smallfiles --quiet --logpath=/dev/null --dbpath=/data/db
     volumes:
-      - /usr/local/var/mongodb:/data/db
+      - ./mongo_data:/data/db
   redis:
     image: redis:3.2.9-alpine
     volumes:
@@ -22,7 +21,7 @@ services:
       - .:/var/www/app/:rw
       - /var/www/app/node_modules
     ports:
-      - "3000:3000"
+      - "8080:8080"
     restart: always
   test:
     image: mhart/alpine-node:8.0.0
@@ -41,7 +40,7 @@ services:
     volumes:
       - .:/var/www/app/:rw
     ports:
-      - "8080:8080"
+      - "3001:8081"
     environment:
       MONGO_URL: "db"
       REDIS_URL: "redis"

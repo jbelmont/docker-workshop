@@ -24,3 +24,6 @@
 
 # Dont add npm-debug.log
 /npm-debug.log
+
+# Mongo data
+/mongo_data

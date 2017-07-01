@@ -15,17 +15,9 @@ func getRouter() *mux.Router {
 	return routes.NewRouter()
 }
 
-func initDB() {
-	model.NewContext()
-}
-
-func initRedis() {
-	redis.ConnectRedis()
-}
-
 func main() {
-	initDB()
-	initRedis()
+	model.NewContext()
+	redis.ConnectRedis()
 	router := getRouter()
 	router.HandleFunc("/ap/v1/users", handlers.GetUsers)
 	log.Fatal(http.ListenAndServe(":3001", router))

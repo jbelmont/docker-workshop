@@ -16,6 +16,7 @@ COPY package.json ${appDir}/package.json
 
 # Install npm dependencies and install ava globally
 RUN npm install
+RUN npm rebuild node-sass
 
 # Add main node execution command
 CMD ["npm", "run", "dev:docker"]
