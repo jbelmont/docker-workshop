@@ -21,7 +21,8 @@ func initRedis() {
 
 func main() {
 	initRedis()
-	model.MongoSetup()
+	context := model.MongoSetup()
+	defer context.Close()
 	router := getRouter()
 	router.HandleFunc("/api/v1/users", handlers.GetUsers)
 	log.Fatal(http.ListenAndServe(":3001", router))
