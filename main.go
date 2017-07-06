@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/jbelmont/docker-workshop/handlers"
 	"github.com/jbelmont/docker-workshop/model"
 	"github.com/jbelmont/docker-workshop/redis"
 	"github.com/jbelmont/docker-workshop/routes"
@@ -16,7 +16,11 @@ func getRouter() *mux.Router {
 }
 
 func initRedis() {
-	redis.SetKey("users", model.GetModels())
+	users := model.GetModels()
+	for key, user := range users {
+		setName := "user:" + strconv.Itoa(key)
+		redis.SetHash(setName, user)
+	}
 }
 
 func main() {
@@ -24,6 +28,5 @@ func main() {
 	context := model.MongoSetup()
 	defer context.Close()
 	router := getRouter()
-	router.HandleFunc("/api/v1/users", handlers.GetUsers)
 	log.Fatal(http.ListenAndServe(":3001", router))
 }

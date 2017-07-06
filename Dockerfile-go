@@ -8,6 +8,7 @@ ENV appDir /var/www/app
 # Set the work directory
 RUN mkdir -p ${appDir}
 WORKDIR ${appDir}
+ADD . ${appDir}
 
 RUN go get gopkg.in/mgo.v2
 RUN go get github.com/keimoon/gore
@@ -17,3 +18,5 @@ RUN go get github.com/jbelmont/docker-workshop/routes
 RUN go get github.com/jbelmont/docker-workshop/handlers
 RUN go get github.com/jbelmont/docker-workshop/model
 RUN go get github.com/jbelmont/docker-workshop/redis
+
+RUN go build

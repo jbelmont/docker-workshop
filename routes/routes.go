@@ -38,17 +38,12 @@ func (h *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func NewRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
-		if route.Name == "Index" {
-			router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("static/"))))
-			continue
-		} else {
-			router.
-				PathPrefix("/api/v1/").
-				Methods(route.Method).
-				Path(route.Pattern).
-				Name(route.Name).
-				Handler(route.HandlerFunc)
-		}
+		router.
+			PathPrefix("/api/v1/").
+			Methods(route.Method).
+			Path(route.Pattern).
+			Name(route.Name).
+			Handler(route.HandlerFunc)
 	}
 
 	return router
@@ -57,14 +52,20 @@ func NewRouter() *mux.Router {
 var routes = Routes{
 	Route{
 		"GET",
+		"/",
+		"Index",
+		handlers.UsersIndex,
+	},
+	Route{
+		"GET",
 		"/users",
 		"Users",
 		handlers.GetUsers,
 	},
 	Route{
-		"GET",
-		"/",
-		"Index",
-		handlers.UsersIndex,
+		"POST",
+		"/addUser",
+		"AddUser",
+		handlers.AddUser,
 	},
 }

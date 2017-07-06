@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/jbelmont/docker-workshop/model"
 	"github.com/keimoon/gore"
 )
 
@@ -26,6 +27,16 @@ const (
 var (
 	dockerDial = os.Getenv(redisURL)
 )
+
+func getDial() string {
+	var dial string
+	if os.Getenv(redisURL) == redis {
+		dial = os.Getenv(redisURL)
+	} else {
+		dial = localDial
+	}
+	return dial
+}
 
 // Users is a slice of User
 type Users []User
@@ -55,16 +66,41 @@ func GetKey(key string) (*gore.Reply, error) {
 	return reply, nil
 }
 
+// GetKeys using KEYS redis command with pattern
+func GetKeys(pattern string) (*gore.Reply, error) {
+	connect := Connect()
+	reply, err := gore.NewCommand("KEYS", pattern).Run(connect)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+// SetHash sets a redis hash set
+func SetHash(key string, data model.UserModel) {
+	connect := Connect()
+	rep, err := gore.NewCommand("HMSET", key, "id", data.ID, "firstname", data.FirstName, "lastname", data.LastName, "email", data.Email, "gender", data.Gender).Run(connect)
+	if err != nil || !rep.IsOk() {
+		log.Fatal(err, "not ok")
+	}
+	defer connect.Close()
+}
+
+// GetHashAll returns redis hash
+func GetHashAll(key string) (*gore.Reply, error) {
+	connect := Connect()
+	rep, err := gore.NewCommand("HGETALL", key).Run(connect)
+	if err != nil {
+		log.Fatal(err, "not ok")
+	}
+	defer connect.Close()
+	return rep, err
+}
+
 // Connect returns redis connection
 func Connect() *gore.Conn {
 	var err error
-	var dial string
-	if redisURL == redis {
-		dial = dockerDial
-	} else {
-		dial = localDial
-	}
-	connect, err = gore.Dial(dial)
+	connect, err = gore.Dial(getDial())
 	if err != nil {
 		return nil
 	}
