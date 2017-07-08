@@ -4,7 +4,6 @@ The Workshop is separated in nine sections:
 
 * [Container Philosophy](docs/containers/README.md)
 * [Docker Basics](docs/docker-basics/README.md)
-* [Building Images](docs/building-images/README.md)
 * [Dockerfile Usage](docs/dockerfile/README.md)
 * [Volumes](docs/volumes/README.md)
 * [Docker Machine](docs/docker-machine/README.md)

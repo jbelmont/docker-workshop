@@ -432,4 +432,4 @@ open "http://$(docker-machine ip default):${$(docker port registry-hello 80)##*:
 
 Previous | Next
 :------- | ---:
-← [Containers](../containers/README.md) | [Building Images](../building-images/README.md) →
+← [Containers](../containers/README.md) | [Dockerfile Usage](../dockerfile/README.md) →
