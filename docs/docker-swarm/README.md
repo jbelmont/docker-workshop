@@ -2,4 +2,4 @@
 
 Previous | Next
 :------- | ---:
-← [Docker Machine](../docker-machine/README.md) | [Dockerhub](../dockerhub/README.md) →
+← [Docker Machine](../docker-machine/README.md) | [Dockerhub](../dockerhub/README.md) →

@@ -2,4 +2,4 @@
 
 Previous | Next
 :------- | ---:
-← [Dockerhub](../dockerhub/README.md) | [README](../../README.md) →
+← [Dockerhub](../dockerhub/README.md) | [README](../../README.md) →
