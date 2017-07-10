@@ -12,6 +12,7 @@
 [Manage Data in containers](https://docs.docker.com/engine/tutorials/dockervolumes/)
 
 ## Data volumes
+_________________________
 
 [Data volumes](https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes)
 
@@ -29,6 +30,8 @@
 * Docker therefore never automatically deletes volumes when you remove a container, nor will it “garbage collect” volumes that are no longer referenced by a container.
 
 ## Add a data volume
+_________________________
+
 * You can add a data volume to a container using the -v flag with the docker create and docker run command. * You can use the -v multiple times to mount multiple data volumes.
 * Now, mount a single volume in your web application container.
 
@@ -37,6 +40,7 @@ $ docker run -d -P --name web -v /webapp training/webapp python app.py
 ```
 
 ## Locate a volume
+_________________________
 
 [Locate a volume](https://docs.docker.com/engine/tutorials/dockervolumes/#locate-a-volume)
 
@@ -76,6 +80,7 @@ $ docker inspect 811f7c31e569
 ```
 
 ## Mount a host directory as a data volume
+_________________________
 
 * The -v flag can also be used to mount a single file - instead of just directories - from the host machine.
 
@@ -114,6 +119,7 @@ $ docker exec -it 92cf83fe29ad /bin/sh
 ```
 
 ## List all volumes
+_________________________
 
 * You can list all existing volumes using `docker volume ls`.
 
@@ -129,6 +135,7 @@ local               2edbb5dd95afa9347997e1a4cf6a7d39620db2ed058c52023df4fc286a7b
 ```
 
 ## Remove Volumes
+_________________________
 
 [Remove Volumes Documentation](https://docs.docker.com/engine/tutorials/dockervolumes/#remove-volumes)
 
@@ -181,6 +188,9 @@ Error response from daemon: unable to remove volume: remove 17826bfcc57a1e09f967
 * This means you can read and write to them with normal Linux tools.
 * In most cases you should not do this as it can cause data corruption
     * if your containers and applications are unaware of your direct access.
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

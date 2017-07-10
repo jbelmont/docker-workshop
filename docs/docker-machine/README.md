@@ -17,8 +17,10 @@
 * [Run Nginx on docker machine2](#run-nginx-on-docker-machine2)
 * [SSH into docker-machine](#ssh-into-docker\-machine)
 * [Docker Machine Cleanup](#docker-machine-cleanup)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
 
 ## Install Docker Toolbox
+_________________________
 
 Download and install [Docker Toolbox](https://www.docker.com/docker-toolbox).
 
@@ -27,6 +29,7 @@ Download and install [Docker Toolbox](https://www.docker.com/docker-toolbox).
 * VirtualBox: To host the virtual machines deployed from Docker Machine
 
 ## What is Docker Toolbox
+_________________________
 
 [Documentation](https://docs.docker.com/toolbox/overview/#whats-in-the-box)
 
@@ -41,6 +44,7 @@ Docker Toolbox includes these Docker tools:
 **You can find various versions of the tools on Toolbox Releases or run them with the --version flag in the terminal, for example, docker-compose --version**
 
 ## What is Docker Machine
+_________________________
 
 [Documentation](https://docs.docker.com/machine/overview/#what-is-docker-machine)
 
@@ -60,6 +64,7 @@ Docker Toolbox includes these Docker tools:
     * include Docker Machine, along with Docker Compose.
 
 ## Why should I use it
+_________________________
 
 * Docker Machine enables you to provision multiple remote Docker hosts on various flavors of Linux.
 * Additionally, Machine allows you to run Docker on older Mac or Windows systems, as described in the previous topic.
@@ -76,6 +81,7 @@ If you work primarily on an older Mac or Windows laptop or desktop that doesn’
 Docker Engine runs natively on Linux systems. If you have a Linux box as your primary system, and want to run docker commands, all you need to do is download and install Docker Engine. However, if you want an efficient way to provision multiple Docker hosts on a network, in the cloud or even locally, you need Docker Machine
 
 ## Difference between Docker Engine and Docker Machine
+_________________________
 
 When people say “Docker” they typically mean Docker Engine, the client-server application made up of the Docker daemon, a REST API that specifies interfaces for interacting with the daemon, and a command line interface (CLI) client that talks to the daemon (through the REST API wrapper). Docker Engine accepts docker commands from the CLI, such as docker run <image>, docker ps to list running containers, docker images to list images, and so on.
 
@@ -86,6 +92,7 @@ Docker Machine is a tool for provisioning and managing your Dockerized hosts (ho
 ![Machine](../../images/machine.png)
 
 ## Create a docker machine running Docker
+_________________________
 
 Create and run a VM named `default` using the following command:
 
@@ -109,6 +116,7 @@ docker-machine start default
 ```
 
 ## Run a docker container in a docker-machine
+_________________________
 
 Now, let's use the docker-machine we've just created. We want to run the `hello-world`.
 
@@ -126,6 +134,7 @@ docker run hello-world
 ```
 
 ## Clean up Docker machine
+_________________________
 
 Stop the docker machine named `default`:
 
@@ -146,6 +155,7 @@ Successfully removed default
 ```
 
 ## Create two docker machines
+_________________________
 
 
 ```bash
@@ -183,6 +193,7 @@ docker-machine ls
 ```
 
 ## Run Nginx on docker machine1
+_________________________
 
 Copy the last line each line in particular this `docker-machine env machine1`
 
@@ -196,6 +207,7 @@ $ open "http://$(docker-machine ip machine1)"
 ```
 
 ## Run Nginx on docker machine2
+_________________________
 
 ```bash
 eval $(docker-machine env machine2)
@@ -206,6 +218,7 @@ open "http://$(docker-machine ip machine2)"
 ```
 
 ## SSH into docker-machine
+_________________________
 
 SSH into docker machine1:
 
@@ -236,6 +249,7 @@ log.log
 ```
 
 ## Environment variables
+_________________________
 
 Docker client is configured by environment variables to connect with remote daemons.
 The following command outputs the variables for connecting to previously created `default` VM.
@@ -251,6 +265,7 @@ export DOCKER_MACHINE_NAME="machine1"
 ```
 
 ## Active Machine
+_________________________
 
 To show the active docker machine name do the following command:
 
@@ -262,6 +277,7 @@ machine2
 **Notice that the last machine we provisioned is listed which is `machine2`**
 
 ## Docker Machine Cleanup
+_________________________
 
 ```bash
 $ docker-machine stop machine1 machine2
@@ -278,6 +294,9 @@ Are you sure? (y/n): y
 Successfully removed machine1
 Successfully removed machine2
 ```
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

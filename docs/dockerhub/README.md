@@ -1,13 +1,14 @@
 # Docker Workshop - Docker Hub
 
-Section:
+## Sections:
 
 * [Docker Hub](#docker-hub)
 * [Using Docker Hub](#using-docker-hub)
 * [Adding images to Docker Hub](#adding-images-to-docker-hub)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
 
 ## Docker Hub
-==========
+_________________________
 
 Think of Docker Hub being to docker what Github is to source control systems for `git`
 
@@ -21,7 +22,7 @@ Private Repositories for Docker Hub are also available to store images:
 * [Nexus](https://www.sonatype.com/nexus-repository-oss) (free) for on-premise Docker repositories.
 
 ## Using Docker Hub
-----------------
+_________________________
 
 Throughout the workshop we used `docker pull SOME_IMAGE` and each time we did this we pulled content from docker hub.
 
@@ -31,7 +32,7 @@ Throughout the workshop we used `docker pull SOME_IMAGE` and each time we did th
     * Environment variables to set and more
 
 ## Adding images to Docker Hub
---------------------
+_________________________
 
 (You can use AWS, Azure, or other private registries if you want to keep private images)
 
@@ -49,6 +50,9 @@ Throughout the workshop we used `docker pull SOME_IMAGE` and each time we did th
 
 5. `docker push username/imagename:version` substituting the details of the image you tagged above.
     1. `docker push jbelmont/hello-world` we pushed our newly tagged image with this command
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

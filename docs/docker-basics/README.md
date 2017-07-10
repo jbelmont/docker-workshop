@@ -1,10 +1,13 @@
 # Docker Workshop - Docker Basics
 
-## Sections
+## Sections:
+
 * [Docker Command Line](#docker-command-line)
 * [Dockerfile basics](#dockerfile-basics)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
 
-# Docker Command Line
+## Docker Command Line
+_________________________
 
 ### Version
 
@@ -201,7 +204,8 @@ Any external changes are visible directly inside the container.
 * Build a static website similar to the hello world example
 * Run it on your machine
 
-# Dockerfile Basics
+## Dockerfile Basics
+_________________________
 
 ### Building a Git Client Container
 
@@ -429,6 +433,9 @@ open "http://$(docker-machine ip default):${$(docker port registry-hello 80)##*:
 ```
 
 * `docker pull` Pull an image or a repository from a Docker registry server
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

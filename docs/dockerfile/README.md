@@ -5,14 +5,17 @@
 * [What is a Dockerfile](#what-is-a-dockerfile)
 * [Usage of docker build](#usage-of-docker-build)
 * [Understand how CMD and ENTRYPOINT interact](#understand-how-cmd-and-entrypoint-interact)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
 
 ## What is a Dockerfile
+_________________________
 
 * Docker can build images automatically by reading the instructions from a `Dockerfile`.
 * A `Dockerfile` is a text document that contains all the commands a user could call on the command line to assemble an image.
 * Using `docker build` users can create an automated build that executes several command-line instructions in succession.
 
 ## Usage of docker build
+_________________________
 
 * The `docker build` command builds an image from a `Dockerfile` and a `context`.
 * The build’s context is the files at a specified location `PATH` or `URL`
@@ -124,6 +127,7 @@ CMD ["bash"]
 ```
 
 ## Understand how CMD and ENTRYPOINT interact
+_________________________
 
 [Understand how CMD and ENTRYPOINT interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
 
@@ -261,6 +265,9 @@ RUN Write-Host hello
 SHELL ["cmd", "/S"", "/C"]
 RUN echo hello
 ```
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

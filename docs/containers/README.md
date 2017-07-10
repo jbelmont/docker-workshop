@@ -1,5 +1,15 @@
 # Docker Workshop - Containers
 
+## Sections:
+
+* [Prerequisites](#prerequisites)
+* [Definition of a Container](#definition-of-a-container)
+* [Containers vs Virtual Machines](#containers-vs-virtual-machines)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
+
+## Prerequisites
+_________________________
+
 [Containers](https://docs.docker.com/get-started/#prerequisites)
 
 Content:
@@ -8,6 +18,7 @@ Content:
 * [Containers vs Virtual Machines](#containers-vs-virtual-machines)
 
 ## Definition of a Container
+_________________________
 
 ### A brief explanation of containers:
 
@@ -32,6 +43,7 @@ Content:
     * the same, regardless of where it’s deployed.
 
 ## Containers vs Virtual Machines
+_________________________
 
 **Consider this diagram comparing virtual machines to containers:**
 
@@ -53,7 +65,10 @@ Content:
 * These processes run like native processes, and you can manage them individually by running commands like
     * docker ps—just like you would run ps on Linux to see active processes.
 * Finally, because they contain all their dependencies, there is no configuration entanglement;
-    * a containerized app “runs anywhere.”
+    * a containerized app "runs anywhere."
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:

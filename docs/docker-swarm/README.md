@@ -1,6 +1,6 @@
 # Docker Workshop - Docker Swarm
 
-Sections:
+## Sections:
 
 * [What is Docker Swarm](#what-is-docker-swarm)
 * [Docker Swarm Nodes](#docker-swarm-nodes)
@@ -9,8 +9,10 @@ Sections:
 * [Activate Docker Swarm](#activate-docker-swarm)
 * [Docker Swarm Services](#docker-swarm-services)
 * [Kill the Docker Swarm](#kill-the-docker-swarm)
+* [Bread Crumb Navigation](#bread-crumb-navigation)
 
 ## What is Docker Swarm
+_________________________
 
 * Docker Swarm is native clustering for Docker.
 * It turns a pool of Docker hosts into a single, virtual Docker host
@@ -18,6 +20,7 @@ Sections:
     * container scheduling, routing and more.
 
 ## Docker Swarm Nodes
+_________________________
 
 * You need a machine cluster to get docker swarm going.
 * Try online with [`play-with-docker`](http://play-with-docker.com/) to try it online.
@@ -34,6 +37,7 @@ Sections:
 * If you'd like your swarm to be persistent and/or experiment than locally is for you
 
 ## Online Docker Sandbox
+_________________________
 
 Go to [`play-with-docker`](http://play-with-docker.com/) and create three nodes with the:
 
@@ -42,6 +46,7 @@ Go to [`play-with-docker`](http://play-with-docker.com/) and create three nodes 
 Skip to the [next section](#activate-docker-swarm).
 
 ## Local Docker Swarm
+_________________________
 
 Make sure you have `docker-machine` installed by doing:
 
@@ -158,7 +163,7 @@ DOCKER_MACHINE_NAME=manager
 * You will need to open a new terminal to go back to the local docker daemon or `unset` the environment variables
 
 ## Activate Docker Swarm
-
+_________________________
 
 Copy the manager node HOST IP address:
 
@@ -258,6 +263,7 @@ ul4dhx5i23v3dcsj77cvvavph     w1                  Ready               Active
 Notice that before we only had 1 node but now we have 3 nodes since the 2 workers joined
 
 ## Docker Swarm Services
+_________________________
 
 We will create a service that pings `google.com`
 
@@ -335,6 +341,7 @@ qzt180qbuw1a        ping_google.5       alpine:latest       manager             
 **This is now a local Docker Swarm**
 
 ## Kill the Docker Swarm
+_________________________
 
 If you are using `play-with-docker` you can just click the delete button in any worker node.
 
@@ -367,6 +374,9 @@ If you get errors after running this then do the following:
 3. `eval $(docker-machine env default)`
 
 Now the environment should be reset back to default
+
+## Bread Crumb Navigation
+_________________________
 
 Previous | Next
 :------- | ---:
