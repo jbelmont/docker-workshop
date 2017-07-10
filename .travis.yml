@@ -6,11 +6,6 @@ go:
 before_install:
   - go get github.com/mattn/goveralls
   - go get github.com/stretchr/testify/assert
-  - go get github.com/gorilla/mux
-  - go get github.com/jbelmont/docker-workshop/handlers
-  - go get github.com/jbelmont/docker-workshop/model
-  - go get github.com/jbelmont/docker-workshop/redis
-  - go get github.com/jbelmont/docker-workshop/routes
 before_script:
   - git config --global user.email "marcelbelmont@gmail.com"
   - git config --global user.name "jbelmont"
