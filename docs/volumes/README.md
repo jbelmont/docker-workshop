@@ -35,8 +35,9 @@ _________________________
 * You can add a data volume to a container using the -v flag with the docker create and docker run command. * You can use the -v multiple times to mount multiple data volumes.
 * Now, mount a single volume in your web application container.
 
+Example
 ```bash
-$ docker run -d -P --name web -v /webapp training/webapp python app.py
+$ docker run -d -P --name myworld -v /var/www/app /var/www/webapp node server.js
 ```
 
 ## Locate a volume

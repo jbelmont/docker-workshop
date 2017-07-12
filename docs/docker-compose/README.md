@@ -342,7 +342,7 @@ $ docker-compose logs
 If we want to review the logs of a specific service, e.g. `api`:
 
 ```bash
-$ docker-compose logs web
+$ docker-compose logs api
 ```
 
 ### List containers
@@ -359,12 +359,13 @@ $ docker-compose ps
 $ docker-compose stop
 ```
 
-Stops running containers without removing them. They can be started again with `docker-compose start`.
+This command stops running containers without removing them.
+The containers can be started again with `docker-compose start`.
 
 If we want we can stop only one container:
 
 ```bash
-$ docker-compose stop web
+$ docker-compose stop api
 ```
 
 ### Start container
@@ -372,7 +373,7 @@ $ docker-compose stop web
 Starts existing containers for a service, e.g. `api`:
 
 ```bash
-$ docker-compose start web
+$ docker-compose start api
 ```
 
 ### Remove containers
