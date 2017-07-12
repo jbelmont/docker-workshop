@@ -13,5 +13,4 @@ WORKDIR ${appDir}
 
 RUN go build
 
-RUN go build -o main .
-CMD [${appMain}]
+CMD ["go", "run", "main.go"]

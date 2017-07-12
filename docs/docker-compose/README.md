@@ -224,9 +224,9 @@ Options specified in the `Dockerfile` (e.g., `CMD`, `EXPOSE`, `VOLUME`, `ENV`) a
 ## Docker Compose build files
 _________________________
 
-We've already created a simple app in `code/guestbook-node` that uses node.js with express and redis.
+We've already created a simple app in `code/docker-compose` that uses Golang and redis.
 
-1. Go to `code/guestbook-node` folder
+1. Go to `code/docker-compose` folder
 
 2. Review `Dockerfile`:
 
@@ -246,8 +246,7 @@ WORKDIR ${appDir}
 
 RUN go build
 
-RUN go build -o main .
-CMD [${appMain}]
+CMD ["go", "run", "main.go"]
 ```
 
 1. We use the base image of `golang:1.8.3`.
@@ -267,7 +266,7 @@ services:
   api:
     build: .
     ports:
-      - "80:3000"
+      - "3000:3000"
     depends_on:
       - redis
 ```
@@ -280,7 +279,7 @@ services:
 * See the docker-compose.yml [reference](https://docs.docker.com/compose/compose-file/)
 * In this case, we defined two services, `redis` that uses `redis:alpine` and `api`, our golang app.
 * We linked the two of them, and `api` depends on `redis` as you can see in `depends_on`.
-* Also, our golang app listens to the port `3000` so we linked host's port 80 to the docker container 3000 port.
+* Also, our golang app listens to the port `3000` so we linked host's port 3000 to the docker container 3000 port.
 
 
 ## Run the Golang API
@@ -297,7 +296,7 @@ $ docker-compose build
 The `docker-compose build` reads the `docker-compose.yml` file and builds all the services defined in there.
 
 ### Run a command against a service
-We can run a one-time command against a service. For example, the following command starts the `api` service and runs `main` as its command.
+We can run a one-time command against a service. For example, the following command starts the `api` service and runs `go run main.go` as its command.
 
 ```bash
 $ docker-compose run api
