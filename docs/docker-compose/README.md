@@ -115,6 +115,107 @@ _________________________
 
 The `docker-compose.yml` file is a [YAML](http://yaml.org/) file defining [services](https://docs.docker.com/compose/compose-file/#service-configuration-reference), [networks](https://docs.docker.com/compose/compose-file/#network-configuration-reference) and [volumes](https://docs.docker.com/compose/compose-file/#volume-configuration-reference). The default path for a Compose file is `./docker-compose.yml`.
 
+<details>
+
+## Key-value pairs (Scalars)
+
+YAML keeps data stored as a map containing keys and values associated to those keys. This map is in no particular order, so you can reorder it at will. Each pair is in the format KEY: VALUE. For example:
+
+```yml
+name: 'John J'
+age: 32
+```
+
+* Note the 'quotes' around the value. When the value is a text string
+* The quotes are used to make sure any special characters are not given special meaning
+    * Instead all the values in quote are the value.
+* So even though they are optional, using them is highly recommended.
+
+YAML will consider that lines prefixed with more spaces than the parent key are contained inside it;
+Moreover, all lines must be prefixed with the same amount of spaces to belong to the same map. So this works:
+
+```yml
+prop:
+    subprop:
+        value: '(%person%) %name%'
+        value2: '* %fruit% %rank%'
+```
+
+Alternative:
+
+```yml
+prop:
+        subprop:
+                    value: '(%person%) %name%'
+                    value2: '* %fruit% %rank%'
+```
+
+This example won't work:
+
+```yml
+formatting:
+from-game:
+chat: '(%sender%) %message%'
+action: '* %sender% %message%'
+```
+
+### Alternative YAML format
+
+YAML supports an alternative syntax to store key-value maps, useful for compressing small maps into a single line.
+
+The syntax is: {KEY: VALUE, KEY: VALUE, ...}. The above example would become:
+
+```yml
+formatting: {from-game: {chat: '(%sender%) %message%', action: '* %sender% %message%'}}
+```
+
+## Lists
+
+* Lists are used to store a collection of ordered values.
+* The values are not associated with a key
+    * only with a positional index obtained from the order in which they are specified (item 1, item 2, etc.).
+
+### Block Sequences
+
+```yml
+- 'item 1'
+- 'item 2'
+```
+
+### Inline Sequences
+
+```yml
+items: ['item 1', 'item 2']
+```
+
+You can have:
+* Maps inside maps
+* Lists inside maps
+* Maps inside lists
+
+## Anchors
+
+```yml
+item:
+  - method: UPDATE
+    where: &FREE_ITEMS
+      - Some Coat
+      - Dress Shoes
+    SellPrice: 1.5
+    BuyPrice: 2.5
+
+stuff:
+  - method: MERGE
+    item-merge: {name: Some Value Here}
+    items: *FREE_ITEMS
+```
+
+* Any YAML node can be anchored and referenced elsewhere as an alias node.
+* To anchor a particular value or set of values, use ``&name of anchor``.
+* To reference an anchor, use ``*name of anchor``.
+
+</details>
+
 A service definition contains configuration which will be applied to each container started for that service, much like passing command-line parameters to `docker run`. Likewise, network and volume definitions are analogous to `docker network create` and `docker volume create`.
 
 Options specified in the `Dockerfile` (e.g., `CMD`, `EXPOSE`, `VOLUME`, `ENV`) are respected by default - you don’t need to specify them again in `docker-compose.yml`.
