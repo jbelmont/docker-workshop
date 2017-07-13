@@ -1,6 +1,6 @@
 # Docker Workshop
 
-* [Introduction](README.md)
+* [Introduction](/README.md)
 * [Container Philosophy](docs/containers/README.md)
 * [Docker Basics](docs/docker-basics/README.md)
 * [Dockerfile Usage](docs/dockerfile/README.md)

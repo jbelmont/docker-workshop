@@ -58,3 +58,7 @@ Windows requirements:
 [Install Docker](https://docs.docker.com/engine/installation/)
 
 ![Docker Logo](images/docker.png)
+
+## Gitbook
+
+Go to the gitbook [Here](https://jbelmont.github.io/docker-workshop/)
