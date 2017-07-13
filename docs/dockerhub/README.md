@@ -56,4 +56,4 @@ _________________________
 
 Previous | Next
 :------- | ---:
-← [Docker Swarm](../docker-swarm/README.md) | [Docker Compose](../docker-compose/README.md) →
+← [Docker Swarm](../docker-swarm/README.md) | [Docker Best Practices](../docker-best-practices/README.md) →

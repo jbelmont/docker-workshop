@@ -2,7 +2,7 @@
 
 ![Docker Toolbox](../../images/dockertoolbox.png)
 
-# Sections
+## Sections:
 
 * [Install Docker Toolbox](#install-docker-toolbox)
 * [What is Docker Toolbox](#what-is-docker-toolbox)
@@ -300,4 +300,4 @@ _________________________
 
 Previous | Next
 :------- | ---:
-← [Volumes](../volumes/README.md) | [Docker Swarm](../docker-swarm/README.md) →
+← [Docker Network](../docker-network/README.md) | [Docker Swarm](../docker-swarm/README.md) →
