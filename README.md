@@ -11,6 +11,7 @@ The Workshop is separated in nine sections:
 * [Docker Machine](docs/docker-machine/README.md)
 * [Docker Swarm](docs/docker-swarm/README.md)
 * [DockerHub](docs/dockerhub/README.md)
+* [Continuous Integration](docs/ci/README.md)
 * [Docker Best Practices](docs/docker-best-practices/README.md)
 
 ### Preparations:
@@ -22,7 +23,7 @@ The Workshop is separated in nine sections:
 ```
 docker pull mongo:3.4.5
 docker pull golang:1.8.3
-docker pull redis:3.2.9-alpine
+docker pull redis
 docker pull mhart/alpine-node:8.0.0
 ```
 

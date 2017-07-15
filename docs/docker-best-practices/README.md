@@ -59,4 +59,4 @@ _________________________
 
 Previous | Next
 :------- | ---:
-← [Dockerhub](../dockerhub/README.md) | [README](../../README.md) →
+← [Continuous Integration](../ci/README.md) | [README](../../README.md) →
