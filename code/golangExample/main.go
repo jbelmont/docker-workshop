@@ -4,6 +4,14 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
+
+	"github.com/garyburd/redigo/redis"
+)
+
+const (
+	localDial = "localhost:6379"
+	redisURL  = "redis:6379"
 )
 
 // Users Struct is the model for the app
@@ -223,6 +231,34 @@ var users = []Users{
 	},
 }
 
+func initRedis() redis.Conn {
+	connect := SetHash()
+	return connect
+}
+
+// Connect returns redis connection
+func Connect() redis.Conn {
+	var err error
+	connect, err := redis.Dial("tcp", redisURL)
+	if err != nil {
+		panic(err)
+	}
+	return connect
+}
+
+// SetHash sets a redis hash set
+func SetHash() redis.Conn {
+	connect := Connect()
+	for key, user := range users {
+		key := "user:" + strconv.Itoa(key)
+		_, err := connect.Do("HMSET", key, "id", user.ID, "firstname", user.FirstName, "lastname", user.LastName, "email", user.Email, "gender", user.Gender)
+		if err != nil {
+			panic(err)
+		}
+	}
+	return connect
+}
+
 // ShowNames will show a list of names
 func ShowNames(w http.ResponseWriter, r *http.Request) {
 	template, err := template.ParseFiles("index.html")
@@ -236,6 +272,8 @@ func ShowNames(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	connect := initRedis()
+	defer connect.Close()
 	http.HandleFunc("/", ShowNames)
 	err := http.ListenAndServe(":3000", nil)
 	if err != nil {

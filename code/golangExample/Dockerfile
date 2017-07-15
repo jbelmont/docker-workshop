@@ -11,6 +11,7 @@ RUN mkdir -p ${appDir}
 ADD . ${appDir}
 WORKDIR ${appDir}
 
+RUN go get github.com/garyburd/redigo/redis
 RUN go build
 
 CMD ["go", "run", "main.go"]

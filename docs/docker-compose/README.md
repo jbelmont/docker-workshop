@@ -351,7 +351,14 @@ We can run `ps` like in `docker ps` to list containers and their status:
 
 ```bash
 $ docker-compose ps
+        Name                       Command               State           Ports
+---------------------------------------------------------------------------------------
+golangexample_api_1     go run main.go                   Up      0.0.0.0:3000->3000/tcp
+golangexample_redis_1   docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp
 ```
+
+* Notice here that when we run `docker-compose ps` command there are 2 services `redis` and `api`
+* Remember that in our `docker-compose.yml` script we have 2 services named `redis` and `api`
 
 ### Stop containers
 
@@ -359,14 +366,21 @@ $ docker-compose ps
 $ docker-compose stop
 ```
 
-This command stops running containers without removing them.
-The containers can be started again with `docker-compose start`.
-
-If we want we can stop only one container:
+* This command stops running containers without removing them.
+* This command will stop all the containers
+* We could also stop an individual service like this `docker-compose stop redis`
 
 ```bash
-$ docker-compose stop api
+$ docker-compose ps
+        Name                       Command               State            Ports
+----------------------------------------------------------------------------------------
+golangexample_api_1     go run main.go                   Up       0.0.0.0:3000->3000/tcp
+golangexample_redis_1   docker-entrypoint.sh redis ...   Exit 0
 ```
+
+Now we have only 1 service running `api`
+
+The containers can be started again with `docker-compose start`.
 
 ### Start container
 
@@ -376,11 +390,29 @@ Starts existing containers for a service, e.g. `api`:
 $ docker-compose start api
 ```
 
+### Ping Container
+
+When can also run ping inside a container to make sure that the services are communicating correctly
+
+```bash
+$ docker-compose exec api /bin/sh
+# ping redis
+PING redis (172.19.0.2): 56 data bytes
+64 bytes from 172.19.0.2: icmp_seq=0 ttl=64 time=0.106 ms
+64 bytes from 172.19.0.2: icmp_seq=1 ttl=64 time=0.146 ms
+64 bytes from 172.19.0.2: icmp_seq=2 ttl=64 time=0.149 ms
+```
+
+* Notice here that we are getting a packet back with the IP_ADDRESS: `172.19.0.2`
+* Pretty cool how Docker is smart enough to alias `redis` service to that IP_ADDRESS for us right !!!
+
 ### Remove containers
 
 ```bash
 $ docker-compose rm
 ```
+
+**If you run `docker-compose rm -f` it will forcibly remove the containers with no verification**
 
 The previous command removes __stopped__ service containers.
 
