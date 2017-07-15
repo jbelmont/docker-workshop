@@ -37,7 +37,7 @@ _________________________
 
 Example
 ```bash
-$ docker run -d -P --name myworld -v /var/www/app /var/www/webapp node server.js
+$ docker run -d -P --name myworld -v /var/www/app -v /var/www/webapp node server.js
 ```
 
 ## Locate a volume
