@@ -47,7 +47,7 @@ Check the available commands of Docker Compose. Type in your terminal:
 
 <details>
 
-```bash
+<pre>
 $ docker-compose
 # output like this
 ...
@@ -73,7 +73,7 @@ Options:
   --project-directory PATH    Specify an alternate working directory
                               (default: the path of the Compose file)
 ...
-```
+</pre>
 
 </details>
 
@@ -117,85 +117,94 @@ The `docker-compose.yml` file is a [YAML](http://yaml.org/) file defining [servi
 
 <details>
 
-## Key-value pairs (Scalars)
+<h4>Key-value pairs (Scalars)</h4>
 
-YAML keeps data stored as a map containing keys and values associated to those keys. This map is in no particular order, so you can reorder it at will. Each pair is in the format KEY: VALUE. For example:
+<ul>
+    <li>YAML keeps data stored as a map containing keys and values associated to those keys.</li>
+    <li>This map is in no particular order, so you can reorder it at will. Each pair is in the format KEY: VALUE. </li>
+</ul>
 
-```yml
+ For example:
+
+<pre>
 name: 'John J'
 age: 32
-```
+</pre>
 
-* Note the 'quotes' around the value. When the value is a text string
-* The quotes are used to make sure any special characters are not given special meaning
-    * Instead all the values in quote are the value.
-* So even though they are optional, using them is highly recommended.
+<ul>
+    <li>Note the 'quotes' around the value. When the value is a text string</li>
+    <li>The quotes are used to make sure any special characters are not given special meaning</li>
+    <li>Instead all the values in quote are the value.</li>
+    <li>So even though they are optional, using them is highly recommended.</li>
+</ul>
 
 YAML will consider that lines prefixed with more spaces than the parent key are contained inside it;
 Moreover, all lines must be prefixed with the same amount of spaces to belong to the same map. So this works:
 
-```yml
+<pre>
 prop:
     subprop:
         value: '(%person%) %name%'
         value2: '* %fruit% %rank%'
-```
+</pre>
 
 Alternative:
 
-```yml
+<pre>
 prop:
         subprop:
                     value: '(%person%) %name%'
                     value2: '* %fruit% %rank%'
-```
+</pre>
 
 This example won't work:
 
-```yml
+<pre>
 formatting:
 from-game:
 chat: '(%sender%) %message%'
 action: '* %sender% %message%'
-```
+</pre>
 
-### Alternative YAML format
+<h4>Alternative YAML format</h4>
 
 YAML supports an alternative syntax to store key-value maps, useful for compressing small maps into a single line.
 
 The syntax is: {KEY: VALUE, KEY: VALUE, ...}. The above example would become:
 
-```yml
+<code>
 formatting: {from-game: {chat: '(%sender%) %message%', action: '* %sender% %message%'}}
-```
+</code>
 
-## Lists
+<h4>Lists</h4>
 
-* Lists are used to store a collection of ordered values.
-* The values are not associated with a key
-    * only with a positional index obtained from the order in which they are specified (item 1, item 2, etc.).
+<ul>
+    <li>Lists are used to store a collection of ordered values.</li>
+    <li>The values are not associated with a key</li>
+    <li>only with a positional index obtained from the order in which they are specified (item 1, item 2, etc.)</li>
+</ul>
 
-### Block Sequences
+<h4>Block Sequences</h4>
 
-```yml
+<pre>
 - 'item 1'
 - 'item 2'
-```
+</pre>
 
-### Inline Sequences
+<h4>Inline Sequences</h4>
 
-```yml
+<code>
 items: ['item 1', 'item 2']
-```
+</code>
 
 You can have:
 * Maps inside maps
 * Lists inside maps
 * Maps inside lists
 
-## Anchors
+<h4>Anchors</h4>
 
-```yml
+<pre>
 item:
   - method: UPDATE
     where: &FREE_ITEMS
@@ -208,11 +217,13 @@ stuff:
   - method: MERGE
     item-merge: {name: Some Value Here}
     items: *FREE_ITEMS
-```
+</pre>
 
-* Any YAML node can be anchored and referenced elsewhere as an alias node.
-* To anchor a particular value or set of values, use ``&name of anchor``.
-* To reference an anchor, use ``*name of anchor``.
+<ul>
+    <li>Any YAML node can be anchored and referenced elsewhere as an alias node.</li>
+    <li>To anchor a particular value or set of values, use ``&name of anchor``.</li>
+    <li>To reference an anchor, use ``*name of anchor``.</li>
+</ul>
 
 </details>
 

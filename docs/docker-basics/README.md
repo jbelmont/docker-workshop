@@ -19,7 +19,8 @@ $ docker version
 
 * If you do not have docker installed, check [Docker Installation](https://docs.docker.com/installation/#installation)
 * Docker will prompt you to update if you don't have the latest version
-* If you're not on docker group you might need to prefix commands with `sudo`. See [Root Access for Linux](http://docs.docker.com/installation/ubuntulinux/#giving-non-root-access) for details about this.
+* If you're not on docker group you might need to prefix commands with `sudo`.
+* See [Root Access for Linux](http://docs.docker.com/installation/ubuntulinux/#giving-non-root-access) for details about this.
 
 ### Commands
 
@@ -40,7 +41,7 @@ docker run alpine echo "Hello World"
 
 <details>
 
-```bash
+<pre>
 $ docker run alpine echo "Hello World"
 Unable to find image 'alpine:latest' locally
 latest: Pulling from library/alpine
@@ -48,7 +49,7 @@ latest: Pulling from library/alpine
 Digest: sha256:1072e499f3f655a032e88542330cf75b02e7bdf673278f701d7ba61629ee3ebe
 Status: Downloaded newer image for alpine:latest
 Hello World
-```
+</pre>
 
 </details>
 
