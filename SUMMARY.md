@@ -10,4 +10,5 @@
 * [Docker Machine](docs/docker-machine/README.md)
 * [Docker Swarm](docs/docker-swarm/README.md)
 * [DockerHub](docs/dockerhub/README.md)
+* [Continuous Integration](docs/ci/README.md)
 * [Docker Best Practices](docs/docker-best-practices/README.md)
