@@ -1,0 +1,622 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker Machine · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../docker-swarm/" />
+    
+    
+    <link rel="prev" href="../docker-network/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docker-basics/">
+            
+                <a href="../docker-basics/">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../volumes/">
+            
+                <a href="../volumes/">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../docker-compose/">
+            
+                <a href="../docker-compose/">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../docker-swarm/">
+            
+                <a href="../docker-swarm/">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../docker-best-practices/">
+            
+                <a href="../docker-best-practices/">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker Machine</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---docker-machine">Docker Workshop - Docker Machine</h1>
+<p><img src="../../images/dockertoolbox.png" alt="Docker Toolbox"></p>
+<h2 id="sections">Sections:</h2>
+<ul>
+<li><a href="#install-docker-toolbox">Install Docker Toolbox</a></li>
+<li><a href="#what-is-docker-toolbox">What is Docker Toolbox</a></li>
+<li><a href="#what-is-docker-machine">What is Docker Machine</a></li>
+<li><a href="#why-should-i-use-it">Why should I use it</a></li>
+<li><a href="#difference-between-docker-engine-and-docker-machine">Difference between Docker Engine and Docker Machine</a></li>
+<li><a href="#create-a-docker-machine-running-docker">Create a docker machine running Docker</a></li>
+<li><a href="#run-a-docker-container-in-a-docker%5C-machine">Run a docker container in a docker-machine</a></li>
+<li><a href="#clean-up-docker-machine">Clean up Docker machine</a></li>
+<li><a href="#create-two-docker-machines">Create two docker machines</a></li>
+<li><a href="#run-nginx-on-docker-machine1">Run Nginx on docker machine1</a></li>
+<li><a href="#run-nginx-on-docker-machine2">Run Nginx on docker machine2</a></li>
+<li><a href="#ssh-into-docker%5C-machine">SSH into docker-machine</a></li>
+<li><a href="#docker-machine-cleanup">Docker Machine Cleanup</a></li>
+<li><a href="#bread-crumb-navigation">Bread Crumb Navigation</a></li>
+</ul>
+<h2 id="install-docker-toolbox">Install Docker Toolbox</h2>
+<hr>
+<p>Download and install <a href="https://www.docker.com/docker-toolbox" target="_blank">Docker Toolbox</a>.</p>
+<ul>
+<li>The toolbox installs a handful of tools on Windows or Mac OS X computer.</li>
+<li>Docker Machine: To deploy virtual machines that run Docker Engine</li>
+<li>VirtualBox: To host the virtual machines deployed from Docker Machine</li>
+</ul>
+<h2 id="what-is-docker-toolbox">What is Docker Toolbox</h2>
+<hr>
+<p><a href="https://docs.docker.com/toolbox/overview/#whats-in-the-box" target="_blank">Documentation</a></p>
+<p>Docker Toolbox includes these Docker tools:</p>
+<ul>
+<li>Docker Machine for running docker-machine commands</li>
+<li>Docker Engine for running the docker commands</li>
+<li>Docker Compose for running the docker-compose commands</li>
+<li>Kitematic, the Docker GUI is a shell preconfigured for a Docker command-line environment</li>
+<li>Oracle VirtualBox</li>
+</ul>
+<p><strong>You can find various versions of the tools on Toolbox Releases or run them with the --version flag in the terminal, for example, docker-compose --version</strong></p>
+<h2 id="what-is-docker-machine">What is Docker Machine</h2>
+<hr>
+<p><a href="https://docs.docker.com/machine/overview/#what-is-docker-machine" target="_blank">Documentation</a></p>
+<ul>
+<li>Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with<ul>
+<li>docker-machine commands.</li>
+</ul>
+</li>
+<li>You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in<ul>
+<li>your data center, or on cloud providers like Azure, AWS, or Digital Ocean.</li>
+</ul>
+</li>
+<li>Using docker-machine commands, you can start, inspect, stop, and restart a managed host, upgrade the<ul>
+<li>Docker client and daemon, and configure a Docker client to talk to your host.</li>
+</ul>
+</li>
+<li>Point the Machine CLI at a running, managed host, and you can run docker commands directly on that host.</li>
+<li>For example, run docker-machine env default to point to a host called default, follow on-screen<ul>
+<li>instructions to complete env setup, and run docker ps, docker run hello-world, and so forth.</li>
+</ul>
+</li>
+<li>Machine was the only way to run Docker on Mac or Windows previous to Docker v1.12.</li>
+<li>Starting with the beta program and Docker v1.12, Docker for Mac and Docker for Windows are available as<ul>
+<li>native apps and the better choice for this use case on newer desktops and laptops.</li>
+</ul>
+</li>
+<li>We encourage you to try out these new apps. The installers for Docker for Mac and Docker for Windows<ul>
+<li>include Docker Machine, along with Docker Compose.</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-should-i-use-it">Why should I use it</h2>
+<hr>
+<ul>
+<li>Docker Machine enables you to provision multiple remote Docker hosts on various flavors of Linux.</li>
+<li>Additionally, Machine allows you to run Docker on older Mac or Windows systems, as described in the previous topic.</li>
+<li>Docker Machine has these two broad use cases.</li>
+</ul>
+<p><img src="../../images/dockermachineuse.png" alt="Docker Machine Uses"></p>
+<ul>
+<li>I have an older desktop system and want to run Docker on Mac or Windows*</li>
+</ul>
+<p>If you work primarily on an older Mac or Windows laptop or desktop that doesn&#x2019;t meet the requirements for the new Docker for Mac and Docker for Windows apps, then you need Docker Machine in order to &#x201C;run Docker&#x201D; (that is, Docker Engine) locally. Installing Docker Machine on a Mac or Windows box with the Docker Toolbox installer provisions a local virtual machine with Docker Engine, gives you the ability to connect it, and run docker commands.</p>
+<ul>
+<li>I want to provision Docker hosts on remote systems</li>
+</ul>
+<p>Docker Engine runs natively on Linux systems. If you have a Linux box as your primary system, and want to run docker commands, all you need to do is download and install Docker Engine. However, if you want an efficient way to provision multiple Docker hosts on a network, in the cloud or even locally, you need Docker Machine</p>
+<h2 id="difference-between-docker-engine-and-docker-machine">Difference between Docker Engine and Docker Machine</h2>
+<hr>
+<p>When people say &#x201C;Docker&#x201D; they typically mean Docker Engine, the client-server application made up of the Docker daemon, a REST API that specifies interfaces for interacting with the daemon, and a command line interface (CLI) client that talks to the daemon (through the REST API wrapper). Docker Engine accepts docker commands from the CLI, such as docker run <image>, docker ps to list running containers, docker images to list images, and so on.</image></p>
+<p><img src="../../images/dockerengine.png" alt="Docker Engine"></p>
+<p>Docker Machine is a tool for provisioning and managing your Dockerized hosts (hosts with Docker Engine on them). Typically, you install Docker Machine on your local system. Docker Machine has its own command line client docker-machine and the Docker Engine client, docker. You can use Machine to install Docker Engine on one or more virtual systems. These virtual systems can be local (as when you use Machine to install and run Docker Engine in VirtualBox on Mac or Windows) or remote (as when you use Machine to provision Dockerized hosts on cloud providers). The Dockerized hosts themselves can be thought of, and are sometimes referred to as, managed &#x201C;machines&#x201D;.</p>
+<p><img src="../../images/machine.png" alt="Machine"></p>
+<h2 id="create-a-docker-machine-running-docker">Create a docker machine running Docker</h2>
+<hr>
+<p>Create and run a VM named <code>default</code> using the following command:</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> $(<span class="hljs-built_in">pwd</span>)/code/docker-machine
+$ docker-machine create <span class="hljs-_">-d</span> virtualbox default
+<span class="hljs-comment"># if the docker-machine exists you will see this</span>
+Host already exists: <span class="hljs-string">&quot;default&quot;</span>
+</code></pre>
+<p>You can list the existing docker-machines:</p>
+<pre><code class="lang-bash">docker-machine ls
+</code></pre>
+<p>In case you already had the machine created, you can simply start the VM:</p>
+<pre><code>docker-machine start default
+</code></pre><h2 id="run-a-docker-container-in-a-docker-machine">Run a docker container in a docker-machine</h2>
+<hr>
+<p>Now, let&apos;s use the docker-machine we&apos;ve just created. We want to run the <code>hello-world</code>.</p>
+<p>If you are using OS X:</p>
+<pre><code>eval $(docker-machine env default)
+</code></pre><p>This will set the <code>DOCKER_HOST</code> variable to the IP address of your <code>default</code> <code>docker-machine</code>.</p>
+<p>Then we should be able run the <code>hello-world</code> container:</p>
+<pre><code class="lang-bash">docker run hello-world
+</code></pre>
+<h2 id="clean-up-docker-machine">Clean up Docker machine</h2>
+<hr>
+<p>Stop the docker machine named <code>default</code>:</p>
+<pre><code class="lang-bash">$ docker-machine stop default
+Stopping <span class="hljs-string">&quot;default&quot;</span>...
+Machine <span class="hljs-string">&quot;default&quot;</span> was stopped.
+</code></pre>
+<p>Remove the docker machine named <code>default</code>:</p>
+<pre><code>$ docker-machine rm default
+About to remove default
+WARNING: This action will delete both local reference and remote instance.
+Are you sure? (y/n): y
+Successfully removed default
+</code></pre><h2 id="create-two-docker-machines">Create two docker machines</h2>
+<hr>
+<pre><code class="lang-bash">$ docker-machine create <span class="hljs-_">-d</span> virtualbox machine1
+$ docker-machine create <span class="hljs-_">-d</span> virtualbox machine2
+<span class="hljs-comment">## This will take a couple of minutes or so and you will see output like this</span>
+Running pre-create checks...
+Creating machine...
+(machine2) Copying /Users/marcelbelmont/.docker/machine/cache/boot2docker.iso to /Users/marcelbelmont/.docker/machine/machines/
+machine2/boot2docker.iso...
+(machine2) Creating VirtualBox VM...
+(machine2) Creating SSH key...
+(machine2) Starting the VM...
+(machine2) Check network to re-create <span class="hljs-keyword">if</span> needed...
+(machine2) Waiting <span class="hljs-keyword">for</span> an IP...
+Waiting <span class="hljs-keyword">for</span> machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting <span class="hljs-keyword">for</span> SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the <span class="hljs-built_in">local</span> machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env machine2
+</code></pre>
+<p><strong>You will have the driver called <code>virtualbox</code> so you need to call it this in order for it to work</strong></p>
+<p>Run the command <code>docker-machine ls</code> to List Docker machines</p>
+<pre><code class="lang-bash">docker-machine ls
+</code></pre>
+<h2 id="run-nginx-on-docker-machine1">Run Nginx on docker machine1</h2>
+<hr>
+<p>Copy the last line each line in particular this <code>docker-machine env machine1</code></p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">eval</span> $(docker-machine env machine1)
+<span class="hljs-comment">## This command connects your Docker Client to the Docker Engine running on this virtual machine</span>
+$ docker run <span class="hljs-_">-d</span> -p 80:80 nginx:1.8-alpine
+$ docker-machine ip machine1
+192.168.99.100
+$ open <span class="hljs-string">&quot;http://<span class="hljs-variable">$(docker-machine ip machine1)</span>&quot;</span>
+</code></pre>
+<h2 id="run-nginx-on-docker-machine2">Run Nginx on docker machine2</h2>
+<hr>
+<pre><code class="lang-bash"><span class="hljs-built_in">eval</span> $(docker-machine env machine2)
+docker run <span class="hljs-_">-d</span> -p 80:80 nginx:1.8-alpine
+docker-machine ip machine2
+192.168.99.101
+open <span class="hljs-string">&quot;http://<span class="hljs-variable">$(docker-machine ip machine2)</span>&quot;</span>
+</code></pre>
+<h2 id="ssh-into-docker-machine">SSH into docker-machine</h2>
+<hr>
+<p>SSH into docker machine1:</p>
+<pre><code class="lang-bash">$ docker-machine ssh machine1
+                        <span class="hljs-comment">##         .</span>
+                  <span class="hljs-comment">## ## ##        ==</span>
+               <span class="hljs-comment">## ## ## ## ##    ===</span>
+           /<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;\___/ ===
+      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+ _                 _   ____     _            _
+| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __
+| &apos;_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ &apos;__|
+| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   &lt;  __/ |
+|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|
+Boot2Docker version 17.06.0-ce, build HEAD : 0672754 - Thu Jun 29 00:06:31 UTC 2017
+Docker version 17.06.0-ce, build 02c1d87
+</span></code></pre>
+<p><strong>Notice the output you receive here</strong></p>
+<pre><code class="lang-bash">docker@machine1:~$ ls
+log.log
+</code></pre>
+<h2 id="environment-variables">Environment variables</h2>
+<hr>
+<p>Docker client is configured by environment variables to connect with remote daemons.
+The following command outputs the variables for connecting to previously created <code>default</code> VM.</p>
+<pre><code class="lang-bash">$ docker-machine env machine1
+<span class="hljs-built_in">export</span> DOCKER_TLS_VERIFY=<span class="hljs-string">&quot;1&quot;</span>
+<span class="hljs-built_in">export</span> DOCKER_HOST=<span class="hljs-string">&quot;tcp://192.168.99.100:2376&quot;</span>
+<span class="hljs-built_in">export</span> DOCKER_CERT_PATH=<span class="hljs-string">&quot;/Users/marcelbelmont/.docker/machine/machines/machine1&quot;</span>
+<span class="hljs-built_in">export</span> DOCKER_MACHINE_NAME=<span class="hljs-string">&quot;machine1&quot;</span>
+<span class="hljs-comment"># Run this command to configure your shell:</span>
+<span class="hljs-comment"># eval $(docker-machine env machine1)</span>
+</code></pre>
+<h2 id="active-machine">Active Machine</h2>
+<hr>
+<p>To show the active docker machine name do the following command:</p>
+<pre><code class="lang-bash">$ docker-machine active
+machine2
+</code></pre>
+<p><strong>Notice that the last machine we provisioned is listed which is <code>machine2</code></strong></p>
+<h2 id="docker-machine-cleanup">Docker Machine Cleanup</h2>
+<hr>
+<pre><code class="lang-bash">$ docker-machine stop machine1 machine2
+<span class="hljs-comment"># You will the following output</span>
+Stopping <span class="hljs-string">&quot;machine2&quot;</span>...
+Stopping <span class="hljs-string">&quot;machine1&quot;</span>...
+Machine <span class="hljs-string">&quot;machine2&quot;</span> was stopped.
+Machine <span class="hljs-string">&quot;machine1&quot;</span> was stopped.
+
+$ docker-machine rm machine1 machine2
+About to remove machine1, machine2
+WARNING: This action will delete both <span class="hljs-built_in">local</span> reference and remote instance.
+Are you sure? (y/n): y
+Successfully removed machine1
+Successfully removed machine2
+</code></pre>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../docker-network/">Docker Network</a></td>
+<td style="text-align:right"><a href="../docker-swarm/">Docker Swarm</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../docker-network/" class="navigation navigation-prev " aria-label="Previous page: Docker Network">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../docker-swarm/" class="navigation navigation-next " aria-label="Next page: Docker Swarm">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker Machine","level":"1.8","depth":1,"next":{"title":"Docker Swarm","level":"1.9","depth":1,"path":"docs/docker-swarm/README.md","ref":"docs/docker-swarm/README.md","articles":[]},"previous":{"title":"Docker Network","level":"1.7","depth":1,"path":"docs/docker-network/README.md","ref":"docs/docker-network/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/docker-machine/README.md","mtime":"2017-07-13T12:40:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

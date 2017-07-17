@@ -1,0 +1,701 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker Swarm · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../dockerhub/" />
+    
+    
+    <link rel="prev" href="../docker-machine/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docker-basics/">
+            
+                <a href="../docker-basics/">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../volumes/">
+            
+                <a href="../volumes/">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../docker-compose/">
+            
+                <a href="../docker-compose/">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../docker-machine/">
+            
+                <a href="../docker-machine/">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../docker-best-practices/">
+            
+                <a href="../docker-best-practices/">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker Swarm</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---docker-swarm">Docker Workshop - Docker Swarm</h1>
+<h2 id="sections">Sections:</h2>
+<ul>
+<li><a href="#what-is-docker-swarm">What is Docker Swarm</a></li>
+<li><a href="#docker-swarm-nodes">Docker Swarm Nodes</a></li>
+<li><a href="#online-docker-sandbox">Online Docker Sandbox</a></li>
+<li><a href="#local-docker-swarm">Local Docker Swarm</a></li>
+<li><a href="#activate-docker-swarm">Activate Docker Swarm</a></li>
+<li><a href="#docker-swarm-services">Docker Swarm Services</a></li>
+<li><a href="#kill-the-docker-swarm">Kill the Docker Swarm</a></li>
+<li><a href="#bread-crumb-navigation">Bread Crumb Navigation</a></li>
+</ul>
+<h2 id="what-is-docker-swarm">What is Docker Swarm</h2>
+<hr>
+<ul>
+<li>Docker Swarm is native clustering for Docker.</li>
+<li>It turns a pool of Docker hosts into a single, virtual Docker host</li>
+<li>It lets you handle a cluster of machines as a single docker daemon, with automatic failover,<ul>
+<li>container scheduling, routing and more.</li>
+</ul>
+</li>
+</ul>
+<h2 id="docker-swarm-nodes">Docker Swarm Nodes</h2>
+<hr>
+<ul>
+<li>You need a machine cluster to get docker swarm going.</li>
+<li>Try online with <a href="http://play-with-docker.com/" target="_blank"><code>play-with-docker</code></a> to try it online.</li>
+</ul>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li><p>Install <a href="https://docs.docker.com/machine/" target="_blank"><code>docker-machine</code></a> and <a href="https://www.virtualbox.org/" target="_blank"><code>Virtualbox</code></a>.</p>
+</li>
+<li><p>If you have <code>Docker for mac</code> or <code>Docker for windows</code> you probably already have it installed;</p>
+</li>
+<li><p><code>Linux</code> users should get <code>docker-machine</code> separately.</p>
+</li>
+<li><p>Docker Swarm is a resource intensive so brace yourself.</p>
+</li>
+<li>If you&apos;re just trying it out, the online route is probably what you want.</li>
+<li>If you&apos;d like your swarm to be persistent and/or experiment than locally is for you</li>
+</ul>
+<h2 id="online-docker-sandbox">Online Docker Sandbox</h2>
+<hr>
+<p>Go to <a href="http://play-with-docker.com/" target="_blank"><code>play-with-docker</code></a> and create three nodes with the:</p>
+<p><strong><code>+ ADD NEW INSTANCE</code> button</strong></p>
+<p>Skip to the <a href="#activate-docker-swarm">next section</a>.</p>
+<h2 id="local-docker-swarm">Local Docker Swarm</h2>
+<hr>
+<p>Make sure you have <code>docker-machine</code> installed by doing:</p>
+<pre><code class="lang-bash">$ docker-machine --version
+<span class="hljs-comment">## Output should appear like this</span>
+docker-machine version 0.12.0, build 45c69ad
+</code></pre>
+<p>Create the cluster master node using <code>docker-machine create</code>:</p>
+<pre><code class="lang-bash">$ docker-machine create <span class="hljs-_">-d</span> virtualbox manager
+<span class="hljs-comment"># This will take a minute or so</span>
+Running pre-create checks...
+Creating machine...
+(manager) Copying /Users/marcelbelmont/.docker/machine/cache/boot2docker.iso to /Users/marcelbelmont/.docker/machine/machines/m
+anager/boot2docker.iso...
+(manager) Creating VirtualBox VM...
+(manager) Creating SSH key...
+(manager) Starting the VM...
+(manager) Check network to re-create <span class="hljs-keyword">if</span> needed...
+(manager) Waiting <span class="hljs-keyword">for</span> an IP...
+Waiting <span class="hljs-keyword">for</span> machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting <span class="hljs-keyword">for</span> SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the <span class="hljs-built_in">local</span> machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env manager
+</code></pre>
+<p>We can ssh into this like we did in the <code>docker-machine</code> lesson:</p>
+<pre><code class="lang-bash">$ docker-machine ssh manager
+<span class="hljs-comment"># Output like this</span>
+docker-machine ssh manager
+                        <span class="hljs-comment">##         .</span>
+                  <span class="hljs-comment">## ## ##        ==</span>
+               <span class="hljs-comment">## ## ## ## ##    ===</span>
+           /<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;\___/ ===
+      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+ _                 _   ____     _            _
+| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __
+| &apos;_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ &apos;__|
+| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   &lt;  __/ |
+|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|
+Boot2Docker version 17.06.0-ce, build HEAD : 0672754 - Thu Jun 29 00:06:31 UTC 2017
+Docker version 17.06.0-ce, build 02c1d87
+
+docker@manager:~$ exit
+</span></code></pre>
+<p>Now let us create some worker nodes for the swarm:</p>
+<pre><code class="lang-bash">$ docker-machine create <span class="hljs-_">-d</span> virtualbox w1
+<span class="hljs-comment"># output here</span>
+$ docker-machine create <span class="hljs-_">-d</span> virtualbox w2
+<span class="hljs-comment"># output the same here</span>
+Running pre-create checks...
+Creating machine...
+(w2) Copying /Users/marcelbelmont/.docker/machine/cache/boot2docker.iso to /Users/marcelbelmont/.docker/machine/machines/w2/boo
+t2docker.iso...
+(w2) Creating VirtualBox VM...
+(w2) Creating SSH key...
+(w2) Starting the VM...
+(w2) Check network to re-create <span class="hljs-keyword">if</span> needed...
+(w2) Waiting <span class="hljs-keyword">for</span> an IP...
+Waiting <span class="hljs-keyword">for</span> machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting <span class="hljs-keyword">for</span> SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the <span class="hljs-built_in">local</span> machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env w2
+</code></pre>
+<p>We need to talk to the docker daemon in the manager node.</p>
+<p>This time we will connect using a different command, it is actually the last line when we provision machine:</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">eval</span> $(docker-machine env manager)
+</code></pre>
+<ul>
+<li>This will set some environment variables telling the docker client both how to find the docker daemon<ul>
+<li>and where to find docker daemon so that the docker client can communicate with the docker daemon</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-bash">$ env | grep DOCKER
+<span class="hljs-comment"># You should see output like this</span>
+DOCKER_TLS_VERIFY=1
+DOCKER_HOST=tcp://192.168.99.100:2376
+DOCKER_CERT_PATH=/Users/marcelbelmont/.docker/machine/machines/manager
+DOCKER_MACHINE_NAME=manager
+</code></pre>
+<ul>
+<li>These commands run on the manager docker daemon you will not see them using <code>docker images</code> or <code>docker ps</code></li>
+<li>You ordinarily see them when you communicate with the local docker daemon</li>
+<li>You will need to open a new terminal to go back to the local docker daemon or <code>unset</code> the environment variables</li>
+</ul>
+<h2 id="activate-docker-swarm">Activate Docker Swarm</h2>
+<hr>
+<p>Copy the manager node HOST IP address:</p>
+<pre><code class="lang-bash">$ env | grep DOCKER
+DOCKER_TLS_VERIFY=1
+DOCKER_HOST=tcp://192.168.99.100:2376
+DOCKER_CERT_PATH=/Users/marcelbelmont/.docker/machine/machines/manager
+DOCKER_MACHINE_NAME=manager
+</code></pre>
+<p><strong>If you are using <code>play-with-docker</code> you will see it in that node&apos;s shell prompt</strong></p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/swarm_init/" target="_blank">docker swarm init docs</a></p>
+<pre><code class="lang-bash">$ docker swarm init --advertise-addr 192.168.99.100
+<span class="hljs-comment"># Output like this should appear</span>
+Swarm initialized: current node (p4vlwh6vt9eyiuzxkkvs3tx98) is now a manager.
+
+To add a worker to this swarm, run the following <span class="hljs-built_in">command</span>:
+
+docker swarm join --token SWMTKN-1-4wpg1wf5xlqpwc16iekegpeb28scexyxmy4g94zuk7kyb03v5y-bumbgd89f0hxvdujr0cl5g6pa 192.168.99.
+100:2377
+
+To add a manager to this swarm, run <span class="hljs-string">&apos;docker swarm join-token manager&apos;</span> and follow the instructions.
+</code></pre>
+<p>This set the node&apos;s docker daemon to swarm mode and output the <code>swarm join</code> command you&apos;ll need for other nodes to join this swarm. Copy it to your clipboard; you&apos;ll need it soon.</p>
+<p>Verify the swarm status by doing.</p>
+<pre><code class="lang-bash">$ docker info
+<span class="hljs-comment"># Output like should appear</span>
+...
+Swarm: active
+ NodeID: p4vlwh6vt9eyiuzxkkvs3tx98
+ Is Manager: <span class="hljs-literal">true</span>
+ ClusterID: u38ogdxglizq9ecvmbui091u8
+ Managers: 1
+ Nodes: 1
+ Orchestration:
+  Task History Retention Limit: 5
+ Raft:
+  Snapshot Interval: 10000
+  Number of Old Snapshots to Retain: 0
+  Heartbeat Tick: 1
+  Election Tick: 3
+ Dispatcher:
+  Heartbeat Period: 5 seconds
+ CA Configuration:
+  Expiry Duration: 3 months
+  Force Rotate: 0
+ Root Rotation In Progress: <span class="hljs-literal">false</span>
+ Node Address: 192.168.99.100
+ Manager Addresses:
+  192.168.99.100:2377
+...
+</code></pre>
+<p><strong>Notice that the swarm is active and there is a manager and it gives you the manager IP address</strong></p>
+<p>Run the following command to see the swarm nodes:</p>
+<pre><code class="lang-bash">$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS
+p4vlwh6vt9eyiuzxkkvs3tx98 *   manager             Ready               Active              Leader
+</code></pre>
+<p>The next step is to make both the worker nodes join the docker swarm cluster:</p>
+<ol>
+<li>Run this commmand <code>docker-machine ssh w1</code> to ssh into worker <code>w1</code></li>
+<li>Run <code>docker swarm join --token SWMTKN-1-4wpg1wf5xlqpwc16iekegpeb28scexyxmy4g94zuk7kyb03v5y-bumbgd89f0hxvdujr0cl5g6pa 192.168.99.
+100:2377</code> to make w1 join the swarm.</li>
+<li>If the command worked you will see this output <code>This node joined a swarm as a worker.</code></li>
+<li>Run <code>exit</code> to leave this worker</li>
+<li>Run this commmand <code>docker-machine ssh w2</code> to ssh into worker <code>w2</code></li>
+<li>Run <code>docker swarm join --token SWMTKN-1-4wpg1wf5xlqpwc16iekegpeb28scexyxmy4g94zuk7kyb03v5y-bumbgd89f0hxvdujr0cl5g6pa 192.168.99.
+100:2377</code> to make w2 join the swarm</li>
+<li>If the command worked you will see this output <code>This node joined a swarm as a worker.</code></li>
+<li>Run <code>exit</code> to leave this worker</li>
+</ol>
+<p>Let us verify that the docker swarm has 3 nodes now:</p>
+<pre><code class="lang-bash">$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS
+p4vlwh6vt9eyiuzxkkvs3tx98 *   manager             Ready               Active              Leader
+svj88yvnpq25mrynlecv4z99s     w2                  Ready               Active
+ul4dhx5i23v3dcsj77cvvavph     w1                  Ready               Active
+</code></pre>
+<p>Notice that before we only had 1 node but now we have 3 nodes since the 2 workers joined</p>
+<h2 id="docker-swarm-services">Docker Swarm Services</h2>
+<hr>
+<p>We will create a service that pings <code>google.com</code></p>
+<pre><code class="lang-bash">$ docker service create --name ping_google --replicas 1 alpine ping google.com
+<span class="hljs-comment"># this will output an ID</span>
+v483vd7v286n6wic0rnd37dri
+</code></pre>
+<p>Now to print information about this service we just created run this command:</p>
+<pre><code class="lang-bash">$ docker service inspect --pretty ping_google
+<span class="hljs-comment"># Output like this should appear</span>
+ID:             v483vd7v286n6wic0rnd37dri
+Name:           ping_google
+Service Mode:   Replicated
+ Replicas:      1
+Placement:
+UpdateConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Update order:      stop-first
+RollbackConfig:
+ Parallelism:   1
+ On failure:    pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Rollback order:    stop-first
+ContainerSpec:
+ Image:         alpine:latest@sha256:1072e499f3f655a032e88542330cf75b02e7bdf673278f701d7ba61629ee3ebe
+ Args:          ping google.com
+Resources:
+Endpoint Mode:  vip
+</code></pre>
+<p>To check service status run this command:</p>
+<pre><code class="lang-bash">$ docker service ps ping_google
+<span class="hljs-comment"># Output like this should appear</span>
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+t0teszvht02q        ping_google.1       alpine:latest       w2                  Running             Running 2 minutes ago
+</code></pre>
+<p>Now let us scale the service and get more replicas by getting this command:</p>
+<pre><code class="lang-bash">$ docker service scale ping_google=5
+<span class="hljs-comment"># Output like this</span>
+ping_google scaled to 5
+</code></pre>
+<p>Now to see which nodes the new replicas are running in do this command:</p>
+<pre><code class="lang-bash">$ docker service ps ping_google
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE
+  ERROR               PORTS
+t0teszvht02q        ping_google.1       alpine:latest       w2                  Running             Running 6 minutes ago
+
+i5ksu8mecbtd        ping_google.2       alpine:latest       manager             Running             Running about a minute ago
+
+ib1cqm3l8j9v        ping_google.3       alpine:latest       w2                  Running             Running about a minute ago
+
+u309fwgz7trk        ping_google.4       alpine:latest       w1                  Running             Running about a minute ago
+
+qzt180qbuw1a        ping_google.5       alpine:latest       manager             Running             Running about a minute ago
+</code></pre>
+<p><strong>Notice that since we scaled this to 5, we get 5 Nodes now</strong></p>
+<p><strong>This is now a local Docker Swarm</strong></p>
+<h2 id="kill-the-docker-swarm">Kill the Docker Swarm</h2>
+<hr>
+<p>If you are using <code>play-with-docker</code> you can just click the delete button in any worker node.</p>
+<pre><code class="lang-bash">$ docker-machine rm w1
+$ docker service ps ping_google
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE            ER
+ROR               PORTS
+t0teszvht02q        ping_google.1       alpine:latest       w2                  Running             Running 10 minutes ago
+
+i5ksu8mecbtd        ping_google.2       alpine:latest       manager             Running             Running 5 minutes ago
+
+ib1cqm3l8j9v        ping_google.3       alpine:latest       w2                  Running             Running 5 minutes ago
+
+2k7470xhl9l3        ping_google.4       alpine:latest       manager             Running             Running 34 seconds ago
+
+u309fwgz7trk         \_ ping_google.4   alpine:latest       w1                  Shutdown            Running 5 minutes ago
+
+qzt180qbuw1a        ping_google.5       alpine:latest       manager             Running             Running 5 minutes ago
+</code></pre>
+<p><strong>Notice that node <code>w1</code> was shut down after we removed the <code>w1</code> worker and the service was rescheduled</strong></p>
+<p>You can run <code>docker-machine rm w2</code> and maybe <code>docker-machine rm manager</code></p>
+<p>If you get errors after running this then do the following:</p>
+<ol>
+<li><code>docker-machine regenerate-certs default</code></li>
+<li><code>docker-machine create -d virtualbox default</code></li>
+<li><code>eval $(docker-machine env default)</code></li>
+</ol>
+<p>Now the environment should be reset back to default</p>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../docker-machine/">Docker Machine</a></td>
+<td style="text-align:right"><a href="../dockerhub/">Dockerhub</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../docker-machine/" class="navigation navigation-prev " aria-label="Previous page: Docker Machine">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../dockerhub/" class="navigation navigation-next " aria-label="Next page: DockerHub">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker Swarm","level":"1.9","depth":1,"next":{"title":"DockerHub","level":"1.10","depth":1,"path":"docs/dockerhub/README.md","ref":"docs/dockerhub/README.md","articles":[]},"previous":{"title":"Docker Machine","level":"1.8","depth":1,"path":"docs/docker-machine/README.md","ref":"docs/docker-machine/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/docker-swarm/README.md","mtime":"2017-07-10T00:35:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

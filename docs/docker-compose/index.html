@@ -1,0 +1,869 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker Compose · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../docker-network/" />
+    
+    
+    <link rel="prev" href="../volumes/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docker-basics/">
+            
+                <a href="../docker-basics/">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../volumes/">
+            
+                <a href="../volumes/">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../docker-machine/">
+            
+                <a href="../docker-machine/">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../docker-swarm/">
+            
+                <a href="../docker-swarm/">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../docker-best-practices/">
+            
+                <a href="../docker-best-practices/">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker Compose</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---docker-compose">Docker Workshop - Docker Compose</h1>
+<h2 id="sections">Sections:</h2>
+<ul>
+<li><a href="#install-docker-compose">Install Docker Compose</a></li>
+<li><a href="#what-is-docker-compose">What is Docker Compose</a></li>
+<li><a href="#docker-compose-commands">Docker Compose Commands</a></li>
+<li><a href="#docker%5C-compose%5C.yml">docker-compose.yml</a></li>
+<li><a href="#docker-compose-build-files">Docker Compose build files</a></li>
+<li><a href="#run-the-golang-api">Run the Golang API</a></li>
+<li><a href="#bread-crumb-navigation">Bread Crumb Navigation</a></li>
+</ul>
+<h2 id="install-docker-compose">Install Docker Compose</h2>
+<hr>
+<p>Download and Install <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a></p>
+<p>Check that docker-compose is installed with this command:</p>
+<pre><code class="lang-bash">$ docker-compose version
+<span class="hljs-comment"># If docker-compose is installed you should see this output</span>
+docker-compose version 1.14.0, build c7bdf9e
+docker-py version: 2.3.0
+CPython version: 2.7.12
+OpenSSL version: OpenSSL 1.0.2j  26 Sep 2016
+</code></pre>
+<h2 id="what-is-docker-compose">What is Docker Compose</h2>
+<hr>
+<ul>
+<li>Compose is a tool for defining and running multi-container Docker applications.</li>
+<li>With Compose, you use a Compose file to configure your application&apos;s services.</li>
+<li>Then, using a single command, you create and start all the services from your configuration.</li>
+<li>To learn more about all the features of Compose see <a href="https://docs.docker.com/compose/overview/#features" target="_blank">the list of features</a></li>
+</ul>
+<p>Using Compose is basically a three-step process:</p>
+<ol>
+<li>Define your app&#x2019;s environment with a <code>Dockerfile</code> so it can be reproduced anywhere.</li>
+<li>Define the services that make up your app in <code>docker-compose.yml</code> so they can be run together in an isolated environment.</li>
+<li>Lastly, run <code>docker-compose up</code> and Compose will start and run your entire app.</li>
+</ol>
+<h2 id="docker-compose-commands">Docker Compose Commands</h2>
+<hr>
+<p>Check the available commands of Docker Compose. Type in your terminal:</p>
+<details>
+
+<pre>
+$ docker-compose
+# output like this
+...
+Usage:
+  docker-compose [-f <arg>...] [options] [COMMAND] [ARGS...]
+  docker-compose -h|--help
+
+Options:
+  -f, --file FILE             Specify an alternate compose file (default: docker-compose.yml)
+  -p, --project-name NAME     Specify an alternate project name (default: directory name)
+  --verbose                   Show more output
+  -v, --version               Print version and exit
+  -H, --host HOST             Daemon socket to connect to
+
+  --tls                       Use TLS; implied by --tlsverify
+  --tlscacert CA_PATH         Trust certs signed only by this CA
+  --tlscert CLIENT_CERT_PATH  Path to TLS certificate file
+  --tlskey TLS_KEY_PATH       Path to TLS key file
+  --tlsverify                 Use TLS and verify the remote
+  --skip-hostname-check       Don&apos;t check the daemon&apos;s hostname against the name specified
+                              in the client certificate (for example if your docker host
+                              is an IP address)
+  --project-directory PATH    Specify an alternate working directory
+                              (default: the path of the Compose file)
+...
+</arg></pre>
+
+</details>
+
+<ul>
+<li>Whenever you don&apos;t remember a command, just type docker-compose</li>
+<li>For more information on a particular command type <code>docker-compose help COMMAND</code><ul>
+<li>(e.g. <code>docker-compose help start</code>)</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Reference</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>build</td>
+<td><a href="https://docs.docker.com/compose/reference/build/" target="_blank">Documentation</a></td>
+<td>Build or rebuild services</td>
+</tr>
+<tr>
+<td>bundle</td>
+<td><a href="https://docs.docker.com/compose/reference/bundle/" target="_blank">Documentation</a></td>
+<td>Generate a Docker bundle from the Compose file</td>
+</tr>
+<tr>
+<td>config</td>
+<td><a href="https://docs.docker.com/compose/reference/config/" target="_blank">Documentation</a></td>
+<td>Validate and view the Compose file</td>
+</tr>
+<tr>
+<td>create</td>
+<td><a href="https://docs.docker.com/compose/reference/create/" target="_blank">Documentation</a></td>
+<td>Create services</td>
+</tr>
+<tr>
+<td>down</td>
+<td><a href="https://docs.docker.com/compose/reference/down/" target="_blank">Documentation</a></td>
+<td>Stop and remove containers, networks, images, and volumes</td>
+</tr>
+<tr>
+<td>events</td>
+<td><a href="https://docs.docker.com/compose/reference/events/" target="_blank">Documentation</a></td>
+<td>Receive real time events from containers</td>
+</tr>
+<tr>
+<td>exec</td>
+<td><a href="https://docs.docker.com/compose/reference/exec/" target="_blank">Documentation</a></td>
+<td>Execute a command in a running container</td>
+</tr>
+<tr>
+<td>help</td>
+<td><a href="https://docs.docker.com/compose/reference/help/" target="_blank">Documentation</a></td>
+<td>Get help on a command</td>
+</tr>
+<tr>
+<td>images</td>
+<td>No Documention</td>
+<td>List images</td>
+</tr>
+<tr>
+<td>kill</td>
+<td><a href="https://docs.docker.com/compose/reference/kill/" target="_blank">Documentation</a></td>
+<td>Kill containers</td>
+</tr>
+<tr>
+<td>logs</td>
+<td><a href="https://docs.docker.com/compose/reference/logs/" target="_blank">Documentation</a></td>
+<td>View output from containers</td>
+</tr>
+<tr>
+<td>pause</td>
+<td><a href="https://docs.docker.com/compose/reference/pause/" target="_blank">Documentation</a></td>
+<td>Pause services</td>
+</tr>
+<tr>
+<td>port</td>
+<td><a href="https://docs.docker.com/compose/reference/port/" target="_blank">Documentation</a></td>
+<td>Print the public port for a port binding</td>
+</tr>
+<tr>
+<td>ps</td>
+<td><a href="https://docs.docker.com/compose/reference/ps/" target="_blank">Documentation</a></td>
+<td>List containers</td>
+</tr>
+<tr>
+<td>pull</td>
+<td><a href="https://docs.docker.com/compose/reference/pull/" target="_blank">Documentation</a></td>
+<td>Pull service images</td>
+</tr>
+<tr>
+<td>push</td>
+<td><a href="https://docs.docker.com/compose/reference/push/" target="_blank">Documentation</a></td>
+<td>Push service images</td>
+</tr>
+<tr>
+<td>restart</td>
+<td><a href="https://docs.docker.com/compose/reference/restart/" target="_blank">Documentation</a></td>
+<td>Restart services</td>
+</tr>
+<tr>
+<td>rm</td>
+<td><a href="https://docs.docker.com/compose/reference/rm/" target="_blank">Documentation</a></td>
+<td>Create services</td>
+</tr>
+<tr>
+<td>run</td>
+<td><a href="https://docs.docker.com/compose/reference/run/" target="_blank">Documentation</a></td>
+<td>Run a one-off command</td>
+</tr>
+<tr>
+<td>scale</td>
+<td><a href="https://docs.docker.com/compose/reference/scale/" target="_blank">Documentation</a></td>
+<td>Set number of containers for a service</td>
+</tr>
+<tr>
+<td>start</td>
+<td><a href="https://docs.docker.com/compose/reference/start/" target="_blank">Documentation</a></td>
+<td>Start services</td>
+</tr>
+<tr>
+<td>stop</td>
+<td><a href="https://docs.docker.com/compose/reference/stop/" target="_blank">Documentation</a></td>
+<td>Stop services</td>
+</tr>
+<tr>
+<td>top</td>
+<td><a href="https://docs.docker.com/compose/reference/top/" target="_blank">Documentation</a></td>
+<td>Display the running processes</td>
+</tr>
+<tr>
+<td>unpause</td>
+<td><a href="https://docs.docker.com/compose/reference/unpause/" target="_blank">Documentation</a></td>
+<td>Unpause services</td>
+</tr>
+<tr>
+<td>up</td>
+<td><a href="https://docs.docker.com/compose/reference/up/" target="_blank">Documentation</a></td>
+<td>Create and start containers</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="https://docs.docker.com/compose/reference/version/" target="_blank">Documentation</a></td>
+<td>Show the Docker-Compose version information</td>
+</tr>
+</tbody>
+</table>
+<h2 id="docker-composeyml">docker-compose.yml</h2>
+<hr>
+<p>The <code>docker-compose.yml</code> file is a <a href="http://yaml.org/" target="_blank">YAML</a> file defining <a href="https://docs.docker.com/compose/compose-file/#service-configuration-reference" target="_blank">services</a>, <a href="https://docs.docker.com/compose/compose-file/#network-configuration-reference" target="_blank">networks</a> and <a href="https://docs.docker.com/compose/compose-file/#volume-configuration-reference" target="_blank">volumes</a>. The default path for a Compose file is <code>./docker-compose.yml</code>.</p>
+<details>
+
+<h4 id="key-value-pairs-scalars">Key-value pairs (Scalars)</h4>
+
+<ul>
+    <li>YAML keeps data stored as a map containing keys and values associated to those keys.</li>
+    <li>This map is in no particular order, so you can reorder it at will. Each pair is in the format KEY: VALUE. </li>
+</ul>
+
+ For example:
+
+<pre>
+name: &apos;John J&apos;
+age: 32
+</pre>
+
+<ul>
+    <li>Note the &apos;quotes&apos; around the value. When the value is a text string</li>
+    <li>The quotes are used to make sure any special characters are not given special meaning</li>
+    <li>Instead all the values in quote are the value.</li>
+    <li>So even though they are optional, using them is highly recommended.</li>
+</ul>
+
+YAML will consider that lines prefixed with more spaces than the parent key are contained inside it;
+Moreover, all lines must be prefixed with the same amount of spaces to belong to the same map. So this works:
+
+<pre>
+prop:
+    subprop:
+        value: &apos;(%person%) %name%&apos;
+        value2: &apos;* %fruit% %rank%&apos;
+</pre>
+
+Alternative:
+
+<pre>
+prop:
+        subprop:
+                    value: &apos;(%person%) %name%&apos;
+                    value2: &apos;* %fruit% %rank%&apos;
+</pre>
+
+This example won&apos;t work:
+
+<pre>
+formatting:
+from-game:
+chat: &apos;(%sender%) %message%&apos;
+action: &apos;* %sender% %message%&apos;
+</pre>
+
+<h4 id="alternative-yaml-format">Alternative YAML format</h4>
+
+YAML supports an alternative syntax to store key-value maps, useful for compressing small maps into a single line.
+
+The syntax is: {KEY: VALUE, KEY: VALUE, ...}. The above example would become:
+
+<code>
+formatting: {from-game: {chat: &apos;(%sender%) %message%&apos;, action: &apos;* %sender% %message%&apos;}}
+</code>
+
+<h4 id="lists">Lists</h4>
+
+<ul>
+    <li>Lists are used to store a collection of ordered values.</li>
+    <li>The values are not associated with a key</li>
+    <li>only with a positional index obtained from the order in which they are specified (item 1, item 2, etc.)</li>
+</ul>
+
+<h4 id="block-sequences">Block Sequences</h4>
+
+<pre>
+- &apos;item 1&apos;
+- &apos;item 2&apos;
+</pre>
+
+<h4 id="inline-sequences">Inline Sequences</h4>
+
+<code>
+items: [&apos;item 1&apos;, &apos;item 2&apos;]
+</code>
+
+You can have:
+* Maps inside maps
+* Lists inside maps
+* Maps inside lists
+
+<h4 id="anchors">Anchors</h4>
+
+<pre>
+item:
+  - method: UPDATE
+    where: &amp;FREE_ITEMS
+      - Some Coat
+      - Dress Shoes
+    SellPrice: 1.5
+    BuyPrice: 2.5
+
+stuff:
+  - method: MERGE
+    item-merge: {name: Some Value Here}
+    items: *FREE_ITEMS
+</pre>
+
+<ul>
+    <li>Any YAML node can be anchored and referenced elsewhere as an alias node.</li>
+    <li>To anchor a particular value or set of values, use ``&amp;name of anchor``.</li>
+    <li>To reference an anchor, use ``*name of anchor``.</li>
+</ul>
+
+</details>
+
+<p>A service definition contains configuration which will be applied to each container started for that service, much like passing command-line parameters to <code>docker run</code>. Likewise, network and volume definitions are analogous to <code>docker network create</code> and <code>docker volume create</code>.</p>
+<p>Options specified in the <code>Dockerfile</code> (e.g., <code>CMD</code>, <code>EXPOSE</code>, <code>VOLUME</code>, <code>ENV</code>) are respected by default - you don&#x2019;t need to specify them again in <code>docker-compose.yml</code>.</p>
+<h2 id="docker-compose-build-files">Docker Compose build files</h2>
+<hr>
+<p>We&apos;ve already created a simple app in <code>code/docker-compose</code> that uses Golang and redis.</p>
+<ol>
+<li><p>Go to <code>code/docker-compose</code> folder</p>
+</li>
+<li><p>Review <code>Dockerfile</code>:</p>
+</li>
+</ol>
+<pre><code class="lang-dockerfile"><span class="hljs-keyword">FROM</span> golang:<span class="hljs-number">1.8</span>.<span class="hljs-number">3</span>
+
+<span class="hljs-keyword">LABEL</span> <span class="bash">maintainer <span class="hljs-string">&quot;marcelbelmont@gmail.com&quot;</span>
+</span>
+<span class="hljs-comment"># Set Environment variables</span>
+<span class="hljs-keyword">ENV</span> appDir /var/www/app
+<span class="hljs-keyword">ENV</span> appMain /var/www/app/main
+
+<span class="hljs-comment"># Set the work directory</span>
+<span class="hljs-keyword">RUN</span> <span class="bash">mkdir -p <span class="hljs-variable">${appDir}</span>
+</span><span class="hljs-keyword">ADD</span> <span class="bash">. <span class="hljs-variable">${appDir}</span>
+</span><span class="hljs-keyword">WORKDIR</span> <span class="bash"><span class="hljs-variable">${appDir}</span>
+</span>
+<span class="hljs-keyword">RUN</span> <span class="bash">go build
+</span>
+<span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;go&quot;</span>, <span class="hljs-string">&quot;run&quot;</span>, <span class="hljs-string">&quot;main.go&quot;</span>]
+</span></code></pre>
+<ol>
+<li>We use the base image of <code>golang:1.8.3</code>.</li>
+<li>Sets <code>LABEL</code> of maintainer</li>
+<li>The <code>Dockerfile</code> then creates the directory where our code will be stored, <code>/var/www/app</code></li>
+<li>Copies all the code we have in the host machine and runs the command that will keep the container running.</li>
+<li>Builds Go binary</li>
+<li><p>Then gives main execution command</p>
+</li>
+<li><p>Review <code>docker-compose.yml</code>:</p>
+</li>
+</ol>
+<pre><code class="lang-yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&apos;3&apos;</span>
+<span class="hljs-attr">services:</span>
+<span class="hljs-attr">  redis:</span>
+<span class="hljs-attr">    image:</span> redis:alpine
+<span class="hljs-attr">  api:</span>
+<span class="hljs-attr">    build:</span> .
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;3000:3000&quot;</span>
+<span class="hljs-attr">    depends_on:</span>
+<span class="hljs-bullet">      -</span> redis
+</code></pre>
+<ul>
+<li>The <code>docker-compose.yml</code> file describes the services that make your app.</li>
+<li>In this example those services are an api and an in memory database.</li>
+<li>The compose file also describes which Docker images these services use, how they link together services</li>
+<li>The compose file also describes any volumes the services might need mounted inside the containers.</li>
+<li>Finally, the <code>docker-compose.yml</code> file describes which ports these services expose.</li>
+<li>See the docker-compose.yml <a href="https://docs.docker.com/compose/compose-file/" target="_blank">reference</a></li>
+<li>In this case, we defined two services, <code>redis</code> that uses <code>redis:alpine</code> and <code>api</code>, our golang app.</li>
+<li>We linked the two of them, and <code>api</code> depends on <code>redis</code> as you can see in <code>depends_on</code>.</li>
+<li>Also, our golang app listens to the port <code>3000</code> so we linked host&apos;s port 3000 to the docker container 3000 port.</li>
+</ul>
+<h2 id="run-the-golang-api">Run the Golang API</h2>
+<hr>
+<h3 id="build-the-images">Build the images</h3>
+<p>The docker-compose yml script can build all the images at once by running the command:</p>
+<pre><code class="lang-bash">$ docker-compose build
+</code></pre>
+<p>The <code>docker-compose build</code> reads the <code>docker-compose.yml</code> file and builds all the services defined in there.</p>
+<h3 id="run-a-command-against-a-service">Run a command against a service</h3>
+<p>We can run a one-time command against a service. For example, the following command starts the <code>api</code> service and runs <code>go run main.go</code> as its command.</p>
+<pre><code class="lang-bash">$ docker-compose run api
+</code></pre>
+<p>Commands you use with <code>run</code> start in new containers with the same configuration as defined by the service&apos;s configuration. This means the container has the same volumes, links, as defined in the configuration file. There two differences though.</p>
+<p>First, the command passed by <code>run</code> overrides the command defined in the service configuration.
+For example, if the <code>api</code> service configuration is started with <code>go</code>, then <code>docker-compose run api sh</code> overrides it with <code>sh</code>.</p>
+<p>The second difference is the <code>docker-compose run</code> command does not create any of the ports specified in the service configuration. This prevents the port collisions with already open ports.</p>
+<h3 id="start-services">Start services</h3>
+<p>We can run <code>docker-compose up</code> that builds, (re)creates, starts, and attaches to containers for a service. Unless they are already running, this command also starts any linked services.</p>
+<p>Type in your terminal:</p>
+<pre><code class="lang-bash">$ docker-compose up
+</code></pre>
+<p>This instructs Compose to run the services defined in the <code>docker-compose.yml</code> in containers, using the <code>redis</code> image and the <code>api</code> service&apos;s image and configuration.</p>
+<p>The docker-compose up command aggregates the output of each container. When the command exits, all containers are stopped.</p>
+<p>If we want, we can run the containers in background with <code>-d</code> flag:</p>
+<pre><code class="lang-bash">$ docker-compose up <span class="hljs-_">-d</span>
+</code></pre>
+<p>At this point, your Node app should be running at port <code>8088</code> on your Docker host. If you are using a Docker Machine VM, you can use the <code>docker-machine ip MACHINE_NAME</code> to get the IP address.</p>
+<h3 id="logs">Logs</h3>
+<p>We can see the log output from services running:</p>
+<pre><code class="lang-bash">$ docker-compose logs
+</code></pre>
+<p>If we want to review the logs of a specific service, e.g. <code>api</code>:</p>
+<pre><code class="lang-bash">$ docker-compose logs api
+</code></pre>
+<h3 id="list-containers">List containers</h3>
+<p>We can run <code>ps</code> like in <code>docker ps</code> to list containers and their status:</p>
+<pre><code class="lang-bash">$ docker-compose ps
+        Name                       Command               State           Ports
+---------------------------------------------------------------------------------------
+golangexample_api_1     go run main.go                   Up      0.0.0.0:3000-&gt;3000/tcp
+golangexample_redis_1   docker-entrypoint.sh redis ...   Up      0.0.0.0:6379-&gt;6379/tcp
+</code></pre>
+<ul>
+<li>Notice here that when we run <code>docker-compose ps</code> command there are 2 services <code>redis</code> and <code>api</code></li>
+<li>Remember that in our <code>docker-compose.yml</code> script we have 2 services named <code>redis</code> and <code>api</code></li>
+</ul>
+<h3 id="stop-containers">Stop containers</h3>
+<pre><code class="lang-bash">$ docker-compose stop
+</code></pre>
+<ul>
+<li>This command stops running containers without removing them.</li>
+<li>This command will stop all the containers</li>
+<li>We could also stop an individual service like this <code>docker-compose stop redis</code></li>
+</ul>
+<pre><code class="lang-bash">$ docker-compose ps
+        Name                       Command               State            Ports
+----------------------------------------------------------------------------------------
+golangexample_api_1     go run main.go                   Up       0.0.0.0:3000-&gt;3000/tcp
+golangexample_redis_1   docker-entrypoint.sh redis ...   Exit 0
+</code></pre>
+<p>Now we have only 1 service running <code>api</code></p>
+<p>The containers can be started again with <code>docker-compose start</code>.</p>
+<h3 id="start-container">Start container</h3>
+<p>Starts existing containers for a service, e.g. <code>api</code>:</p>
+<pre><code class="lang-bash">$ docker-compose start api
+</code></pre>
+<h3 id="ping-container">Ping Container</h3>
+<p>When can also run ping inside a container to make sure that the services are communicating correctly</p>
+<pre><code class="lang-bash">$ docker-compose <span class="hljs-built_in">exec</span> api /bin/sh
+<span class="hljs-comment"># ping redis</span>
+PING redis (172.19.0.2): 56 data bytes
+64 bytes from 172.19.0.2: icmp_seq=0 ttl=64 time=0.106 ms
+64 bytes from 172.19.0.2: icmp_seq=1 ttl=64 time=0.146 ms
+64 bytes from 172.19.0.2: icmp_seq=2 ttl=64 time=0.149 ms
+</code></pre>
+<ul>
+<li>Notice here that we are getting a packet back with the IP_ADDRESS: <code>172.19.0.2</code></li>
+<li>Pretty cool how Docker is smart enough to alias <code>redis</code> service to that IP_ADDRESS for us right !!!</li>
+</ul>
+<h3 id="remove-containers">Remove containers</h3>
+<pre><code class="lang-bash">$ docker-compose rm
+</code></pre>
+<p><strong>If you run <code>docker-compose rm -f</code> it will forcibly remove the containers with no verification</strong></p>
+<p>The previous command removes <strong>stopped</strong> service containers.</p>
+<p>If we want to stop and remove them:</p>
+<pre><code class="lang-bash">$ docker-compose down
+</code></pre>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../volumes/">Volumes</a></td>
+<td style="text-align:right"><a href="../docker-network/">Docker Network</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../volumes/" class="navigation navigation-prev " aria-label="Previous page: Volumes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../docker-network/" class="navigation navigation-next " aria-label="Next page: Docker Network">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker Compose","level":"1.6","depth":1,"next":{"title":"Docker Network","level":"1.7","depth":1,"path":"docs/docker-network/README.md","ref":"docs/docker-network/README.md","articles":[]},"previous":{"title":"Volumes","level":"1.5","depth":1,"path":"docs/volumes/README.md","ref":"docs/volumes/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/docker-compose/README.md","mtime":"2017-07-15T03:51:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

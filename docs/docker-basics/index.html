@@ -1,0 +1,733 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker Basics · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../dockerfile/" />
+    
+    
+    <link rel="prev" href="../containers/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../volumes/">
+            
+                <a href="../volumes/">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../docker-compose/">
+            
+                <a href="../docker-compose/">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../docker-machine/">
+            
+                <a href="../docker-machine/">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../docker-swarm/">
+            
+                <a href="../docker-swarm/">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../docker-best-practices/">
+            
+                <a href="../docker-best-practices/">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker Basics</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---docker-basics">Docker Workshop - Docker Basics</h1>
+<h2 id="sections">Sections:</h2>
+<ul>
+<li><a href="#docker-command-line">Docker Command Line</a></li>
+<li><a href="#dockerfile-basics">Dockerfile basics</a></li>
+<li><a href="#bread-crumb-navigation">Bread Crumb Navigation</a></li>
+</ul>
+<h2 id="docker-command-line">Docker Command Line</h2>
+<hr>
+<h3 id="version">Version</h3>
+<p>Check that you have latest version of docker installed with the command:</p>
+<pre><code class="lang-bash">$ docker version
+</code></pre>
+<ul>
+<li>If you do not have docker installed, check <a href="https://docs.docker.com/installation/#installation" target="_blank">Docker Installation</a></li>
+<li>Docker will prompt you to update if you don&apos;t have the latest version</li>
+<li>If you&apos;re not on docker group you might need to prefix commands with <code>sudo</code>.</li>
+<li>See <a href="http://docs.docker.com/installation/ubuntulinux/#giving-non-root-access" target="_blank">Root Access for Linux</a> for details about this.</li>
+</ul>
+<h3 id="commands">Commands</h3>
+<p>Check the available docker commands</p>
+<pre><code class="lang-bash">$ docker
+</code></pre>
+<ul>
+<li>Type <code>docker</code> to see all available docker commands</li>
+<li>For more info, type <code>docker help $DOCKER_COMMAND</code> (e.g. <code>docker help info</code>)</li>
+</ul>
+<h3 id="hello-world-docker-container">&quot;Hello World&quot; Docker container</h3>
+<pre><code>docker run alpine echo &quot;Hello World&quot;
+</code></pre><details>
+
+<pre>
+$ docker run alpine echo &quot;Hello World&quot;
+Unable to find image &apos;alpine:latest&apos; locally
+latest: Pulling from library/alpine
+88286f41530e: Already exists
+Digest: sha256:1072e499f3f655a032e88542330cf75b02e7bdf673278f701d7ba61629ee3ebe
+Status: Downloaded newer image for alpine:latest
+Hello World
+</pre>
+
+</details>
+
+<p><strong>Notice that if the docker image doesn&apos;t exist that docker will pull the image for you</strong></p>
+<p>This docker image merely prints the text <code>Hello World</code> and then exits</p>
+<h3 id="interactive-container">Interactive Container</h3>
+<pre><code class="lang-bash">$ docker run -it alpine sh
+/ <span class="hljs-comment"># cat /etc/host</span>
+hostname  hosts
+/ <span class="hljs-comment"># cat /etc/hostname</span>
+6152fd2650a9
+</code></pre>
+<p>Notice that the docker container shell is in the root path <code>/</code></p>
+<p>Docker commandline options for <code>run</code></p>
+<ul>
+<li><code>-i, --interactive</code> Keep STDIN open even if not attached</li>
+<li><code>-t, --tty</code> Allocate a pseudo-TTY</li>
+</ul>
+<h3 id="container-with-a-pipeline">Container with a pipeline</h3>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;banana&quot;</span> <span class="hljs-string">&quot;apples&quot;</span> <span class="hljs-string">&quot;tomatoes&quot;</span> <span class="hljs-string">&quot;\n&quot;</span> <span class="hljs-string">&quot;burger&quot;</span> | docker run -i alpine wc <span class="hljs-_">-l</span>
+2
+</code></pre>
+<h3 id="searching-a-container">Searching a container</h3>
+<pre><code class="lang-bash">$ docker search <span class="hljs-_">-s</span> 5 alpine
+Flag --stars has been deprecated, use --filter=stars=3 instead
+NAME                           DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+alpine                         A minimal Docker image based on Alpine Lin...   2353      [OK]
+anapsix/alpine-java            Oracle Java 8 (and 7) with GLIBC 2.23 over...   219                  [OK]
+frolvlad/alpine-glibc          Alpine Docker image with glibc (~12MB)          86                   [OK]
+container4armhf/armhf-alpine   Automatically built base images of Alpine ...   67                   [OK]
+davidcaste/alpine-tomcat       Apache Tomcat 7/8 using Oracle Java 7/8 wi...   19                   [OK]
+</code></pre>
+<p>Docker commandline options for <code>search</code></p>
+<ul>
+<li><code>-s $DOCKER_AMOUNT</code> Displays at least $DOCKER_AMOUNT of results</li>
+</ul>
+<h3 id="run-container-and-expose-port">Run container and expose port</h3>
+<p>Linux:</p>
+<pre><code class="lang-bash">docker run <span class="hljs-_">-d</span> -p 3002:80 nginx
+google-chrome localhost:3000
+</code></pre>
+<p>OS X:</p>
+<pre><code class="lang-bash">docker run <span class="hljs-_">-d</span> -p 3002:80 nginx
+open <span class="hljs-string">&quot;http://<span class="hljs-variable">$(docker-machine ip default)</span>:3000&quot;</span>
+</code></pre>
+<p>*If you run into issues with this command do the following:</p>
+<default>
+```bash
+$ docker-machine stop default
+$ docker-machine ip default
+
+$ docker-machine start default
+Starting &quot;default&quot;...
+(default) Check network to re-create if needed...
+(default) Waiting for an IP...
+Machine &quot;default&quot; was started.
+Waiting for SSH to be available...
+Detecting the provisioner...
+Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+$ eval &quot;$(docker-machine env default)&quot;
+$ docker-machine env
+export DOCKER_TLS_VERIFY=&quot;1&quot;
+export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;
+export DOCKER_CERT_PATH=&quot;/Users/marcelbelmont/.docker/machine/machines/default&quot;
+export DOCKER_MACHINE_NAME=&quot;default&quot;
+
+# Run this command to configure your shell:
+# eval $(docker-machine env)
+$ docker run -d -p 3002:80 nginx
+Unable to find image &apos;nginx:latest&apos; locally
+latest: Pulling from library/nginx
+e6e142a99202: Pull complete
+c5b776fbdd26: Pull complete
+1128674f0003: Pull complete
+Digest: sha256:8e2645484fe09122ea8aef7a186658082a860312d47fa51675cbf21d1b4b901a
+Status: Downloaded newer image for nginx:latest
+6bd06e4427580752b350c49fce64414a635cb816b395ab5832c41b6204980628
+
+$ open &quot;http://$(docker-machine ip default):3002&quot;
+```
+</default>
+
+<p>Docker commandline options for <code>run</code></p>
+<ul>
+<li><code>-d, --detach</code> Run container in background and print container ID</li>
+<li><code>-p, --publish list</code> Publish a container&apos;s port(s) to the host</li>
+<li>For more info about the container, see <a href="https://registry.hub.docker.com/_/nginx/" target="_blank">nginx</a></li>
+</ul>
+<p><img src="../../images/nginx.png" alt="Nginx Success"></p>
+<h3 id="docker-container-with-a-volume">Docker container with a volume</h3>
+<p>NOTE: You should <code>cd docker-workshop</code> since we will be using volume mounts in the containers in this repo.</p>
+<p><em>You will need to stop the process running in port <code>3002</code> currently</em></p>
+<pre><code class="lang-bash">$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+6bd06e442758        nginx               <span class="hljs-string">&quot;nginx -g &apos;daemon ...&quot;</span>   43 minutes ago      Up 43 minutes       0.0.0.0:3002-&gt;80/tcp   affectionate_hawking
+
+$ docker stop 6bd06e442758
+6bd06e442758
+</code></pre>
+<p>On Linux:</p>
+<pre><code class="lang-bash">docker run <span class="hljs-_">-d</span> -p 3002:80 -v $(<span class="hljs-built_in">pwd</span>)/docker-workshop/hello-world/site/:/usr/share/nginx/html:ro nginx
+google-chrome localhost:3002
+</code></pre>
+<p>OS X:</p>
+<pre><code class="lang-bash">$ docker build -t helloworld
+$ docker run <span class="hljs-_">-d</span> -p 3002:80 -v $(<span class="hljs-built_in">pwd</span>)/code/hello-world/site/:/usr/share/nginx/html:ro nginx
+$ open <span class="hljs-string">&quot;http://<span class="hljs-variable">$(docker-machine ip default)</span>:3002&quot;</span>
+</code></pre>
+<p>Stepping into the Running Container</p>
+<pre><code class="lang-bash">$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                  NAMES
+14d304726a06        nginx               <span class="hljs-string">&quot;nginx -g &apos;daemon ...&quot;</span>   About a minute ago   Up About a minute   0.0.0.0:3002-&gt;80/tcp   keen_heyrovsky
+
+$ docker <span class="hljs-built_in">exec</span> -it 14d304726a06 /bin/sh
+
+<span class="hljs-comment"># cd /usr/share/nginx/html</span>
+
+<span class="hljs-comment"># cat index.html</span>
+</code></pre>
+<ul>
+<li><code>-v, --volume list</code> Bind mount a volume (HOST:CONTAINER)</li>
+<li>The volume is <em>linked</em> inside the container.
+Any external changes are visible directly inside the container.</li>
+<li>Remember though that volumes are to be used for data, not code</li>
+</ul>
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Build a static website similar to the hello world example</li>
+<li>Run it on your machine</li>
+</ul>
+<h2 id="dockerfile-basics">Dockerfile Basics</h2>
+<hr>
+<h3 id="building-a-git-client-container">Building a Git Client Container</h3>
+<p>Create a Git Container manually:</p>
+<pre><code class="lang-bash">$ docker run -it --name git alpine sh
+<span class="hljs-comment"># apk --update add git</span>
+<span class="hljs-comment"># git version</span>
+<span class="hljs-comment"># exit</span>
+</code></pre>
+<p>Commit the docker container:</p>
+<pre><code class="lang-bash">$ docker commit git docker-git
+a1a4c66165227d2222070febaf6431402bd0ba8dc4ee69a156072cae9ec5dbe2
+
+$ docker rm git
+git
+
+$ docker run --rm -it docker-git git version
+git version 2.13.0
+
+$ docker rmi docker-git
+Untagged: docker-git:latest
+Deleted: sha256:a1a4c66165227d2222070febaf6431402bd0ba8dc4ee69a156072cae9ec5dbe2
+Deleted: sha256:6717e3e65ffaf33d3872c24a896542dea9903a52bd9f8b1e7f063<span class="hljs-built_in">fc</span>3ee658fde
+</code></pre>
+<ul>
+<li><code>docker run --name string</code> Assign a name to the container</li>
+<li><code>docker commit</code> Create a new image from a container&apos;s changes</li>
+<li><code>docker rm</code> Remove one or more containers</li>
+<li><code>docker rmi</code> Remove one or more images</li>
+<li><code>docker run --rm</code> Automatically remove the container when it exits</li>
+</ul>
+<p>Create a Git Container with Dockerfile:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> code/docker-git
+docker build -t docker-git .
+docker run -it docker-git git version
+</code></pre>
+<ul>
+<li><code>docker build</code> Build an image from a Dockerfile</li>
+</ul>
+<p><a href="../../code/docker-git/Dockerfile">code/docker-git/Dockerfile</a></p>
+<pre><code class="lang-bash">FROM alpine:3.5
+RUN apk update
+RUN apk add git
+</code></pre>
+<ul>
+<li>The <strong>FROM</strong> instruction sets the Base Image for subsequent instructions</li>
+<li>The <strong>RUN</strong> instruction will execute any commands in a new layer on top of the current image and commit the results</li>
+</ul>
+<h3 id="docker-build-an-apache-server-container">Docker build an Apache Server Container</h3>
+<p>Create an Apache Server Container with Dockerfile:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> code/docker-apache2
+docker build -t docker-apache2 .
+docker run <span class="hljs-_">-d</span> -p 3003:80 docker-apache2
+</code></pre>
+<p>Linux:</p>
+<pre><code>google-chrome http://localhost:3003
+</code></pre><p>OS X:</p>
+<pre><code>open http://localhost:3003
+</code></pre><p><a href="../../code/docker-apache2/Dockerfile">code/docker-apache2/Dockerfile</a></p>
+<pre><code>FROM alpine:3.5
+RUN apk --update add apache2 &amp;&amp; rm -rf /var/cache/apk/*
+RUN mkdir -p /run/apache2
+EXPOSE 80
+CMD httpd -D FOREGROUND
+</code></pre><p><a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank">Expose Command in Dockerfile</a></p>
+<ul>
+<li>The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime.</li>
+</ul>
+<p><a href="https://docs.docker.com/engine/reference/builder/#cmd" target="_blank">CMD Command in Dockerfile</a></p>
+<p>The CMD instruction has three forms:</p>
+<ol>
+<li>CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;] (exec form, this is the preferred form)</li>
+<li>CMD [&quot;param1&quot;,&quot;param2&quot;] (as default parameters to ENTRYPOINT)</li>
+<li>CMD command param1 param2 (shell form)</li>
+</ol>
+<h3 id="build-a-static-website-image">BUILD a Static website Image</h3>
+<pre><code>cd code/hello-world
+docker build -t hello-world .
+docker run -d --name hello -P hello-world
+</code></pre><p>On Linux:</p>
+<pre><code>google-chrome $(docker port hello 80)
+</code></pre><p>On Mac:</p>
+<pre><code>open &quot;http://$(docker-machine ip default):${$(docker port hello 80)##*:}&quot;
+</code></pre><ul>
+<li><code>-P, --publish-all</code> Publish all exposed ports to random ports</li>
+<li><code>docker port</code> List port mappings or a specific mapping for the container</li>
+</ul>
+<p><a href="../../code/hello-world/Dockerfile">code/hello-world/Dockerfile</a></p>
+<pre><code>FROM nginx:1.8-alpine
+ADD site /usr/share/nginx/html
+</code></pre><p><a href="https://docs.docker.com/engine/reference/builder/#add" target="_blank">ADD Command in Dockerfile</a></p>
+<p>ADD has two forms:</p>
+<ol>
+<li>ADD <src>... <dest></dest></src></li>
+<li>ADD [&quot;<src>&quot;,... &quot;<dest>&quot;] (this form is required for paths containing whitespace)</dest></src></li>
+</ol>
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Build your website with Dockerfile</li>
+<li>Run an instance</li>
+</ul>
+<h3 id="push-docker-image-to-registry">Push Docker image to registry</h3>
+<p><a href="https://docs.docker.com/registry/#requirements" target="_blank">Docker Registry</a></p>
+<p>Launching a registry:</p>
+<pre><code class="lang-bash">$ docker run <span class="hljs-_">-d</span> -p 4000:4000 --name registry registry:2
+Unable to find image <span class="hljs-string">&apos;registry:2&apos;</span> locally
+2: Pulling from library/registry
+90f4dba627d6: Pull complete
+3a754cdc94a5: Pull complete
+0756a217635f: Pull complete
+f82b9495c796: Pull complete
+154ef19ddee6: Pull complete
+Digest: sha256:5eaafa2318aa0c4c52f95077c2a68bed0b13f6d2b464835723d4de1484052299
+Status: Downloaded newer image <span class="hljs-keyword">for</span> registry:2
+f7f9be850b0f5e7c3ef741a9bfdd9e7c6df7e10b29cc641e55b318dfdd82a931
+</code></pre>
+<p>Tag Docker image under the registry namespace and push it:</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> code/hello-world
+$ docker build -t hello-world .
+Sending build context to Docker daemon  5.632kB
+Step 1/2 : FROM nginx:1.8-alpine
+ ---&gt; c0dddb65129b
+Step 2/2 : ADD site /usr/share/nginx/html
+ ---&gt; Using cache
+ ---&gt; 37e37aa0cac0
+Successfully built 37e37aa0cac0
+
+$ docker login
+$ REGISTRY=localhost:5000
+$ docker tag hello-world <span class="hljs-variable">$REGISTRY</span>/$(whoami)/hello-world
+$ docker push <span class="hljs-variable">$REGISTRY</span>/$(whoami)/hello-world
+
+*this <span class="hljs-built_in">command</span> could fail*
+
+If it fails <span class="hljs-keyword">then</span> <span class="hljs-keyword">do</span> the following below
+
+$ docker login
+$ docker tag hello-world jbelmont/hello-world
+$ docker push jbelmont/hello-world
+The push refers to a repository [docker.io/jbelmont/hello-world]
+62bf6ff9568c: Pushed
+5f70bf18a086: Mounted from library/nginx
+55b35a1a5<span class="hljs-built_in">cd</span>1: Mounted from library/nginx
+b7c1623f5bfc: Mounted from library/nginx
+b96a0a302d98: Mounted from library/nginx
+c56b7dabbc7a: Mounted from library/nginx
+latest: digest: sha256:e297cc2cf9ce018a2f90e9febfcc199444d4dc31cbcbada9417b328a20f63<span class="hljs-built_in">cd</span>1 size: 2596
+</code></pre>
+<p>Read <a href="https://github.com/moby/moby/issues/29608" target="_blank">Moby Github issue</a></p>
+<ul>
+<li><code>docker tag</code> Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</li>
+<li><code>docker push</code> Push an image or a repository to a registry</li>
+</ul>
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Push your website to the local Registry (use your github username)</li>
+<li>Push your website image</li>
+</ul>
+<h3 id="pulling-docker-image-from-a-repository">Pulling Docker Image from a Repository</h3>
+<pre><code class="lang-bash">$ docker pull jbelmont/hello-world
+Using default tag: latest
+latest: Pulling from jbelmont/hello-world
+Digest: sha256:e297cc2cf9ce018a2f90e9febfcc199444d4dc31cbcbada9417b328a20f63<span class="hljs-built_in">cd</span>1
+Status: Image is up to date <span class="hljs-keyword">for</span> jbelmont/hello-world:latest
+
+docker run <span class="hljs-_">-d</span> -P --name=registry-hello jbelmont/hello-world
+</code></pre>
+<p>On Linux:</p>
+<pre><code>google-chrome $(docker port registry-hello 80)
+</code></pre><p><img src="../../images/helloworld.png" alt="Hello World Docker Image"></p>
+<p>On Mac:</p>
+<pre><code>open &quot;http://$(docker-machine ip default):${$(docker port registry-hello 80)##*:}&quot;
+</code></pre><ul>
+<li><code>docker pull</code> Pull an image or a repository from a Docker registry server</li>
+</ul>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../containers/">Containers</a></td>
+<td style="text-align:right"><a href="../dockerfile/">Dockerfile Usage</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../containers/" class="navigation navigation-prev " aria-label="Previous page: Container Philosophy">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../dockerfile/" class="navigation navigation-next " aria-label="Next page: Dockerfile Usage">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker Basics","level":"1.3","depth":1,"next":{"title":"Dockerfile Usage","level":"1.4","depth":1,"path":"docs/dockerfile/README.md","ref":"docs/dockerfile/README.md","articles":[]},"previous":{"title":"Container Philosophy","level":"1.2","depth":1,"path":"docs/containers/README.md","ref":"docs/containers/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/docker-basics/README.md","mtime":"2017-07-15T03:00:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

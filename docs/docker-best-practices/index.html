@@ -1,0 +1,431 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker Best Practices · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../ci/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docker-basics/">
+            
+                <a href="../docker-basics/">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../volumes/">
+            
+                <a href="../volumes/">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../docker-compose/">
+            
+                <a href="../docker-compose/">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../docker-machine/">
+            
+                <a href="../docker-machine/">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../docker-swarm/">
+            
+                <a href="../docker-swarm/">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker Best Practices</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---docker-best-practices">Docker Workshop - Docker Best Practices</h1>
+<h2 id="sections">Sections:</h2>
+<ul>
+<li><a href="#best-practices-for-writing-dockerfiles">Best practices for writing Dockerfiles</a></li>
+<li><a href="#read-best-practices-readme">Read Best Practices README</a></li>
+<li><a href="#bread-crumb-navigation">Bread Crumb Navigation</a></li>
+</ul>
+<h2 id="best-practices-for-writing-dockerfiles">Best practices for writing Dockerfiles</h2>
+<p><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/" target="_blank">Best Practices for Dockerfiles Documentation</a></p>
+<h4 id="containers-should-be-ephemeral">Containers should be ephemeral</h4>
+<ul>
+<li>The container produced by the image your Dockerfile defines should be as ephemeral as possible.</li>
+<li>By &#x201C;ephemeral,&#x201D; we mean that it can be stopped and destroyed and a new one built and put in place with an absolute minimum of set-up and configuration.</li>
+</ul>
+<h4 id="use-a-dockerignore-file">Use a .dockerignore file</h4>
+<ul>
+<li>In most cases, it&#x2019;s best to put each Dockerfile in an empty directory.</li>
+<li>Then, add to that directory only the files needed for building the Dockerfile.</li>
+<li>To increase the build&#x2019;s performance, you can exclude files and directories by adding a .dockerignore file to that directory as well.</li>
+</ul>
+<h4 id="avoid-installing-unnecessary-packages">Avoid installing unnecessary packages</h4>
+<ul>
+<li>In order to reduce complexity, dependencies, file sizes, and build times, you should avoid installing extra or unnecessary packages just because they might be &#x201C;nice to have.&#x201D;</li>
+</ul>
+<h4 id="each-container-should-have-only-one-concern">Each container should have only one concern</h4>
+<ul>
+<li>Decoupling applications into multiple containers makes it much easier to scale horizontally and reuse containers</li>
+</ul>
+<h4 id="minimize-the-number-of-layers">Minimize the number of layers</h4>
+<ul>
+<li>You need to find the balance between readability (and thus long-term maintainability) of the Dockerfile and minimizing the number of layers it uses.</li>
+<li>Be strategic and cautious about the number of layers you use.</li>
+</ul>
+<h4 id="sort-multi-line-arguments">Sort multi-line arguments</h4>
+<ul>
+<li>Whenever possible, ease later changes by sorting multi-line arguments alphanumerically.</li>
+<li>This will help you avoid duplication of packages and make the list much easier to update.</li>
+<li>This also makes PRs a lot easier to read and review</li>
+</ul>
+<pre><code class="lang-dockerfile"><span class="hljs-keyword">RUN</span> <span class="bash">apt-get update &amp;&amp; apt-get install -y \
+  bzr \
+  cvs \
+  git \
+  mercurial \
+  subversion
+</span></code></pre>
+<p><strong>Try to run all the <code>RUN</code> COMMANDS in one line because doing multiple RUN commands makes image larger</strong></p>
+<h2 id="read-best-practices-readme">Read Best Practices README</h2>
+<p>Github user FuriKuri wrote an excellent README compiling best practices from blogs and other articles <a href="https://github.com/FuriKuri/docker-best-practices" target="_blank">HERE</a></p>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../ci/">Continuous Integration</a></td>
+<td style="text-align:right"><a href="../../">README</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../ci/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Continuous Integration">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Docker Best Practices","level":"1.12","depth":1,"previous":{"title":"Continuous Integration","level":"1.11","depth":1,"path":"docs/ci/README.md","ref":"docs/ci/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/docker-best-practices/README.md","mtime":"2017-07-15T01:44:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,16 @@
+dist: trusty
+sudo: required
+language: go
+go:
+  - 1.8.x
+before_install:
+  - go get github.com/mattn/goveralls
+  - go get github.com/stretchr/testify/assert
+before_script:
+  - git config --global user.email "marcelbelmont@gmail.com"
+  - git config --global user.name "jbelmont"
+script:
+  - go test ./...
+env:
+  global:
+    secure: XR1gtkk5R+7UbgMs6pUxUkB4+RP67SR/3Q63CDf6wTv8gyxccTZ5ESXF6ii8k7iMPu8sPolN6EXTdVRV3kHN02CDr1kso00crPpn9eYFSUwEsTO5deh2/PK+po7rOKo+5QTjG1KPgeaQbkW/pdvE66PtHxH94WJ/6Ed2/yU2Atd3iKx8UInxgmOFpW1HeyrC55XBbxTcyQv+hMPqNKcrxZWJW4UU/qU88Pw5q9wEw0X8zrAF6O1asErgadsmhzBoD6dmlbNf1KFIrqujiIP21NEt+5DhtM4MV3iyNm3c9z4YnKWRzV6padrrW8enHVoKzQcbR9uzgHxoaAlsM6faaMmvrrjTcohDQK8fPtHxFTdN4W8JASJViEr/PUjZJvvcVAfKgRMgJY8FXL5aX68Le5WBK4PtMTWl7+0RdKtI66syc69q7pGJ79tbQa4ufv/CgBiI2WZPNftU5e+lFqlVfq8G3FZHkh0QRBL+FEU09x3ZKePxBh4oGLi3CCLcYu+nMwIL1R4IibNzm6xnxuXl/HwcJ5VGDQ1PC67E36jFeE+QGxjbQL1sRMaw+QgIYqijKapLz5/R7FvR0FG32v182XqV0dK/Wtze3/FxAsmi0n28FcdB9QqoEpOWNPCHaPeSPu49vVUIVzuZUP9G8Infjh3KrW1mRmcIKecHmDLOde0=

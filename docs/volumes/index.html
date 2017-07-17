@@ -1,0 +1,559 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Volumes · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../docker-compose/" />
+    
+    
+    <link rel="prev" href="../dockerfile/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../containers/">
+            
+                <a href="../containers/">
+            
+                    
+                    Container Philosophy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docker-basics/">
+            
+                <a href="../docker-basics/">
+            
+                    
+                    Docker Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dockerfile/">
+            
+                <a href="../dockerfile/">
+            
+                    
+                    Dockerfile Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Volumes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../docker-compose/">
+            
+                <a href="../docker-compose/">
+            
+                    
+                    Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../docker-network/">
+            
+                <a href="../docker-network/">
+            
+                    
+                    Docker Network
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../docker-machine/">
+            
+                <a href="../docker-machine/">
+            
+                    
+                    Docker Machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../docker-swarm/">
+            
+                <a href="../docker-swarm/">
+            
+                    
+                    Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../dockerhub/">
+            
+                <a href="../dockerhub/">
+            
+                    
+                    DockerHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../ci/">
+            
+                <a href="../ci/">
+            
+                    
+                    Continuous Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../docker-best-practices/">
+            
+                <a href="../docker-best-practices/">
+            
+                    
+                    Docker Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Volumes</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-workshop---volumes">Docker Workshop - Volumes</h1>
+<h1 id="sections">Sections</h1>
+<ul>
+<li><a href="#data-volumes">Data volumes</a></li>
+<li><a href="#add-a-data-volume">Add a data volume</a></li>
+<li><a href="#locate-a-volume">Locate a volume</a></li>
+<li><a href="#mount-a-host-directory-as-a-data-volume">Mount a host directory as a data volume</a></li>
+<li><a href="#list-all-volumes">List all volumes</a></li>
+<li><a href="#remove-volumes">Remove volumes</a></li>
+<li><a href="#important-tips-on-using-shared-volumes">Important tips on using shared volumes</a></li>
+</ul>
+<p><a href="https://docs.docker.com/engine/tutorials/dockervolumes/" target="_blank">Manage Data in containers</a></p>
+<h2 id="data-volumes">Data volumes</h2>
+<hr>
+<p><a href="https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes" target="_blank">Data volumes</a></p>
+<ul>
+<li>A data volume is a specially-designated directory within one or more containers that bypasses the Union File System.</li>
+<li><p>Data volumes provide several useful features for persistent or shared data:</p>
+</li>
+<li><p>Volumes are initialized when a container is created.</p>
+</li>
+<li>If the container&#x2019;s parent image contains data at the specified mount point, that existing data is copied<ul>
+<li>into the new volume upon volume initialization.</li>
+</ul>
+</li>
+<li>Data volumes can be shared and reused among containers.</li>
+<li>Changes to a data volume are made directly.</li>
+<li>Changes to a data volume will not be included when you update an image.</li>
+<li>Data volumes persist even if the container itself is deleted.</li>
+<li>Data volumes are designed to persist data, independent of the container&#x2019;s lifecycle.</li>
+<li>Docker therefore never automatically deletes volumes when you remove a container, nor will it &#x201C;garbage collect&#x201D; volumes that are no longer referenced by a container.</li>
+</ul>
+<h2 id="add-a-data-volume">Add a data volume</h2>
+<hr>
+<ul>
+<li>You can add a data volume to a container using the -v flag with the docker create and docker run command. * You can use the -v multiple times to mount multiple data volumes.</li>
+<li>Now, mount a single volume in your web application container.</li>
+</ul>
+<p>Example</p>
+<pre><code class="lang-bash">$ docker run <span class="hljs-_">-d</span> -P --name myworld -v /var/www/app /var/www/webapp node server.js
+</code></pre>
+<h2 id="locate-a-volume">Locate a volume</h2>
+<hr>
+<p><a href="https://docs.docker.com/engine/tutorials/dockervolumes/#locate-a-volume" target="_blank">Locate a volume</a></p>
+<p>You can locate the volume on the host by utilizing the docker inspect command.</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> $(<span class="hljs-built_in">pwd</span>)/code/volume
+$ docker build -t myworld .
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM nginx:1.8-alpine
+ ---&gt; c0dddb65129b
+Step 2/4 : RUN mkdir /myvol
+ ---&gt; Running <span class="hljs-keyword">in</span> a1202772bb2d
+ ---&gt; 235985e2eb66
+Removing intermediate container a1202772bb2d
+Step 3/4 : RUN <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hello world&quot;</span> &gt; /myvol/greeting
+ ---&gt; Running <span class="hljs-keyword">in</span> d2825<span class="hljs-built_in">cd</span>6b4cc
+ ---&gt; 3990fa008013
+Removing intermediate container d2825<span class="hljs-built_in">cd</span>6b4cc
+Step 4/4 : VOLUME /myvol
+ ---&gt; Running <span class="hljs-keyword">in</span> a608dea8adf2
+ ---&gt; 811f7c31e569
+Removing intermediate container a608dea8adf2
+Successfully built 811f7c31e569
+Successfully tagged myworld:latestb
+
+<span class="hljs-comment"># Copy image id from the part that says Successfully Built</span>
+$ docker run -it 811f7c31e569  bash
+$ docker inspect 811f7c31e569
+...
+...
+<span class="hljs-string">&quot;Volumes&quot;</span>: {
+    <span class="hljs-string">&quot;/myvol&quot;</span>: {}
+},
+...
+...
+</code></pre>
+<h2 id="mount-a-host-directory-as-a-data-volume">Mount a host directory as a data volume</h2>
+<hr>
+<ul>
+<li>The -v flag can also be used to mount a single file - instead of just directories - from the host machine.</li>
+</ul>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> $(<span class="hljs-built_in">pwd</span>)/code/volume
+
+$ docker build -t volume .
+$ docker run -p 3004:3004 -v $(<span class="hljs-built_in">pwd</span>)/public:/var/www/app/public <span class="hljs-_">-d</span> volume
+$ docker ps
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS                    NAMES
+845f10d27f46        volume              <span class="hljs-string">&quot;npm start&quot;</span>         About a minute ago   Up About a minute   0.0.0.0:3004-&gt;3004/tcp   eager_newton
+
+$ open <span class="hljs-string">&quot;http://localhost:3004&quot;</span>
+$ docker <span class="hljs-built_in">exec</span> -it 845f10d27f46 /bin/sh
+</code></pre>
+<p>You should see this in your default browser if the container is running:</p>
+<p><img src="../../images/uploadtocontainer.png" alt="Upload to the container"></p>
+<pre><code class="lang-bash">$ docker ps
+$ docker stop 845f10d27f46
+$ docker rm 845f10d27f46
+$ docker run -p 3004:3004 -v $(<span class="hljs-built_in">pwd</span>)/public:/var/www/app/public <span class="hljs-_">-d</span> volume
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+92cf83fe29ad        volume              <span class="hljs-string">&quot;npm start&quot;</span>         7 seconds ago       Up 5 seconds        0.0.0.0:3004-&gt;3004/tcp   silly_ritchie
+
+$ docker <span class="hljs-built_in">exec</span> -it 92cf83fe29ad /bin/sh
+<span class="hljs-comment"># inside container now</span>
+
+ /var/www/app <span class="hljs-comment"># ls public/</span>
+<span class="hljs-comment"># should list the file that you uploaded because it is a data volume</span>
+</code></pre>
+<h2 id="list-all-volumes">List all volumes</h2>
+<hr>
+<ul>
+<li>You can list all existing volumes using <code>docker volume ls</code>.</li>
+</ul>
+<pre><code class="lang-bash">$ docker volume ls
+DRIVER              VOLUME NAME
+<span class="hljs-built_in">local</span>               0b59c34bdd779a300f7c0f9d020920695e416ed1bbc54413449f2239b1195317
+<span class="hljs-built_in">local</span>               16b8335b4f40ff448e687694f7793f034d3b1a7047ac783b2f7e90e6395fa638
+<span class="hljs-built_in">local</span>               17826bfcc57a1e09f96727f64befc34b2c0a42b87173fe40cbb4ded4075a077d
+<span class="hljs-built_in">local</span>               17a013dfa5454d4c92b966efe03db9679de701688a4ef30cdd131e8d47fae36e
+<span class="hljs-built_in">local</span>               1f290b3b39ad3e7f99c1c6b145cb2b6f91<span class="hljs-built_in">fc</span>221d9c8ca0037d2e186d461df60b
+<span class="hljs-built_in">local</span>               2edbb5dd95afa9347997e1a4cf6a7d39620db2ed058c52023df4<span class="hljs-built_in">fc</span>286a7b6936
+</code></pre>
+<h2 id="remove-volumes">Remove Volumes</h2>
+<hr>
+<p><a href="https://docs.docker.com/engine/tutorials/dockervolumes/#remove-volumes" target="_blank">Remove Volumes Documentation</a></p>
+<ul>
+<li>A Docker data volume persists after a container is deleted.</li>
+<li>You can create named or anonymous volumes.</li>
+<li>Named volumes have a specific source form outside the container, for example awesome:/bar.</li>
+<li>Anonymous volumes have no specific source.</li>
+<li>When the container is deleted, you should instruct the Docker Engine daemon to clean up anonymous volumes.</li>
+<li>To do this, use the <code>--rm</code> option, for example:</li>
+</ul>
+<p><code>$ docker run --rm -v /foo -v awesome:/bar busybox top</code></p>
+<ul>
+<li>This command creates an anonymous /foo volume.</li>
+<li>When the container is removed, the Docker Engine removes the /foo volume but not the awesome volume.</li>
+</ul>
+<pre><code class="lang-bash">$ ls public
+<span class="hljs-comment">## Notice that the file is still sitting locally in your folder</span>
+</code></pre>
+<p>To remove all unused volumes and free up space:</p>
+<p><code>$ docker volume prune</code></p>
+<p>If you try to remove a data volume in use docker will issue an error</p>
+<pre><code class="lang-bash">$ docker volume ls
+docker volume ls
+DRIVER              VOLUME NAME
+<span class="hljs-built_in">local</span>               0264dec3eff9960ff480f573da464b1767ab9b027d204f11013e6721001c777b
+<span class="hljs-built_in">local</span>               17826bfcc57a1e09f96727f64befc34b2c0a42b87173fe40cbb4ded4075a077d
+
+$ docker volume rm 0264dec3eff9960ff480f573da464b1767ab9b027d204f11013e6721001c777b 17826bfcc57a1e09f96727f64befc34b2c0a42b87173fe40cbb4ded4075a077d
+
+<span class="hljs-comment">## You might see output like this</span>
+27f64befc34b2c0a42b87173fe40cbb4ded4075a077d
+0264dec3eff9960ff480f573da464b1767ab9b027d204f11013e6721001c777b
+Error response from daemon: unable to remove volume: remove 17826bfcc57a1e09f96727f64befc34b2c0a42b87173fe40cbb4ded4075a077d: volume is <span class="hljs-keyword">in</span> use - [f60a925f4bf7b9339bc5d04de119<span class="hljs-built_in">fc</span>01e30335fd9625390bc66ed974fbc2607a]
+</code></pre>
+<h2 id="important-tips-on-using-shared-volumes">Important tips on using shared volumes</h2>
+<p><a href="https://docs.docker.com/engine/tutorials/dockervolumes/#important-tips-on-using-shared-volumes" target="_blank">Documentation</a></p>
+<ul>
+<li>Multiple containers can also share one or more data volumes.</li>
+<li>However, multiple containers writing to a single shared volume can cause data corruption.</li>
+<li>Make sure your applications are designed to write to shared data stores.</li>
+<li>Data volumes are directly accessible from the Docker host.</li>
+<li>This means you can read and write to them with normal Linux tools.</li>
+<li>In most cases you should not do this as it can cause data corruption<ul>
+<li>if your containers and applications are unaware of your direct access.</li>
+</ul>
+</li>
+</ul>
+<h2 id="bread-crumb-navigation">Bread Crumb Navigation</h2>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Previous</th>
+<th style="text-align:right">Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x2190; <a href="../dockerfile/">Dockerfile Usage</a></td>
+<td style="text-align:right"><a href="../docker-compose/">Docker Compose</a> &#x2192;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../dockerfile/" class="navigation navigation-prev " aria-label="Previous page: Dockerfile Usage">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../docker-compose/" class="navigation navigation-next " aria-label="Next page: Docker Compose">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Volumes","level":"1.5","depth":1,"next":{"title":"Docker Compose","level":"1.6","depth":1,"path":"docs/docker-compose/README.md","ref":"docs/docker-compose/README.md","articles":[]},"previous":{"title":"Dockerfile Usage","level":"1.4","depth":1,"path":"docs/dockerfile/README.md","ref":"docs/dockerfile/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["flowchart"],"pluginsConfig":{"flowchart":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/volumes/README.md","mtime":"2017-07-17T12:47:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-17T12:49:54.124Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
