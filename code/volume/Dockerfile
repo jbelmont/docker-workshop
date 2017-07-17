@@ -19,7 +19,7 @@ COPY . ${appDir}
 # Define mountable directories.
 VOLUME [${volumeDir}, ${appNodeModules}]
 
-EXPOSE 3004 3004
+EXPOSE 3006 3006
 
 # Add main node execution command
 CMD ["npm", "start"]
